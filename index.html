@@ -3,1022 +3,505 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cybersecurity Acronyms</title>
+    <title>Acronyms Glossary</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        /* Custom styles for smooth transitions and Inter font */
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f4f4f4;
-            color: #333;
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Light gray background */
+            color: #374151; /* Dark gray text */
         }
-        h1 {
-            color: #0056b3;
+        .category-content, .acronym-definition {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
         }
-        .category-header {
-            cursor: pointer;
-            padding: 15px 20px;
-            background-color: #0056b3;
-            color: white;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 1.2em;
-            font-weight: bold;
+        .category-content.active, .acronym-definition.active {
+            max-height: 9999px; /* Increased to allow all content to show */
+            transition: max-height 0.5s ease-in, padding 0.5s ease-in;
         }
-        .category-header:hover {
-            background-color: #004080;
+        .category-content.active {
+            padding-top: 0.5rem; /* pt-2 */
+            padding-bottom: 0.5rem; /* pb-2 */
         }
-        .category-content {
-            display: none;
-            background-color: #fff;
-            padding: 10px 20px;
-            margin-bottom: 20px;
-            border-radius: 0 0 8px 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            border-top: 3px solid #0056b3; /* Added border-top for visual separation */
+        .acronym-definition.active {
+            padding-top: 0.25rem; /* pt-1 */
+            padding-bottom: 0.25rem; /* pb-1 */
         }
-        .acronym-item {
-            margin-bottom: 5px;
+        /* Style for scrollbar in case content exceeds max-height */
+        .category-content, .acronym-definition {
+            scrollbar-width: thin;
+            scrollbar-color: #9ca3af #f3f4f6;
         }
-        .acronym-header {
-            cursor: pointer;
-            padding: 8px 0;
-            border-bottom: 1px solid #eee;
-            font-weight: bold;
-            color: #333;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .category-content::-webkit-scrollbar, .acronym-definition::-webkit-scrollbar {
+            width: 8px;
         }
-        .acronym-header:hover {
-            color: #0056b3;
+        .category-content::-webkit-scrollbar-track, .acronym-definition::-webkit-scrollbar-track {
+            background: #f3f4f6;
+            border-radius: 10px;
         }
-        .acronym-definition {
-            display: none;
-            padding: 5px 0 10px 15px; /* Added left padding for indentation */
-            line-height: 1.6;
-            color: #555;
-            font-size: 0.95em;
-        }
-        .category-header::after {
-            content: '▼';
-            font-size: 0.8em;
-            transition: transform 0.3s;
-        }
-        .category-header.active::after {
-            content: '▲';
-            transform: rotate(180deg);
-        }
-        .acronym-header::after {
-            content: '▼';
-            font-size: 0.7em;
-            transition: transform 0.3s;
-        }
-        .acronym-header.active::after {
-            content: '▲';
-            transform: rotate(180deg);
+        .category-content::-webkit-scrollbar-thumb, .acronym-definition::-webkit-scrollbar-thumb {
+            background-color: #9ca3af;
+            border-radius: 10px;
+            border: 2px solid #f3f4f6;
         }
     </style>
 </head>
-<body>
+<body class="p-4 sm:p-6 md:p-8 lg:p-10">
+    <div class="max-w-4xl mx-auto bg-white p-6 rounded-xl shadow-lg">
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-center text-blue-700 mb-8">Acronyms Glossary</h1>
 
-    <h1>Cybersecurity Acronyms</h1>
-
-    <div class="category-block">
-        <div class="category-header" onclick="toggleCategory(this)">Security Fundamentals & Concepts</div>
-        <div class="category-content">
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">2FA</div>
-                <div class="acronym-definition"><strong>Two-factor Authentication:</strong> A security process in which a user provides two different authentication factors to verify themselves.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">AAA</div>
-                <div class="acronym-definition"><strong>Authentication, Authorization, and Accounting:</strong> A framework for controlling access, enforcing policies, and auditing usage for computer network resources.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">ACL</div>
-                <div class="acronym-definition"><strong>Access Control List:</strong> A list of permissions associated with a system resource (object); a set of rules that defines permissions for users or systems to access specific resources, such as files, directories, or network devices.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">CAPTCHA</div>
-                <div class="acronym-definition"><strong>Completely Automated Public Turing Test to Tell Computers and Humans Apart:</strong> A challenge-response test used to determine whether the user is human.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">CIA</div>
-                <div class="acronym-definition"><strong>Confidentiality, Integrity, Availability:</strong> The three main goals of information security.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">DAC</div>
-                <div class="acronym-definition"><strong>Discretionary Access Control:</strong> An access control model where the owner of a resource can control who has access to it.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">DEP</div>
-                <div class="acronym-definition"><strong>Data Execution Prevention:</strong> A system-level memory protection feature that marks certain memory areas as non-executable.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">DLP</div>
-                <div class="acronym-definition"><strong>Data Loss Prevention:</strong> A set of tools and processes used to ensure that sensitive data is not lost, misused, or accessed by unauthorized users.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">FACL</div>
-                <div class="acronym-definition"><strong>File System Access Control List:</strong> An access control list specifically for file systems.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">FIM</div>
-                <div class="acronym-definition"><strong>File Integrity Management:</strong> The process of validating the integrity of operating system and application software files.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">GPO</div>
-                <div class="acronym-definition"><strong>Group Policy Object:</strong> A collection of settings that define how a system looks and behaves for a defined group of users.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">IAM</div>
-                <div class="acronym-definition"><strong>Identity and Access Management:</strong> A framework of policies and technologies for ensuring that the right people have the appropriate access to technology resources.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">MAC (Mandatory Access Control)</div>
-                <div class="acronym-definition"><strong>Mandatory Access Control:</strong> An access control model where the operating system or security kernel restricts the ability of a subject to access or perform some operation on an object.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">MDM</div>
-                <div class="acronym-definition"><strong>Mobile Device Management:</strong> Software that allows organizations to centrally control, secure, and manage mobile devices.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">MFA</div>
-                <div class="acronym-definition"><strong>Multifactor Authentication:</strong> An authentication method that requires the user to provide two or more verification factors to gain access to a resource.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">OAUTH</div>
-                <div class="acronym-definition"><strong>Open Authorization:</strong> An open standard for access delegation, commonly used as a way for Internet users to grant websites or applications access to their information on other websites without giving them the passwords.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">PAM (Privileged Access Management)</div>
-                <div class="acronym-definition"><strong>Privileged Access Management:</strong> Cybersecurity strategies and technologies for exercising control over the privileged access of users, accounts, processes, and systems across an IT environment.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">PHI</div>
-                <div class="acronym-definition"><strong>Personal Health Information:</strong> Any information about health status, provision of health care, or payment for health care that is created or collected by a "covered entity" (or a business associate of a covered entity) and can be linked to a specific individual.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">PII</div>
-                <div class="acronym-definition"><strong>Personally Identifiable Information:</strong> Information that can be used to distinguish or trace an individual's identity.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">PIV</div>
-                <div class="acronym-definition"><strong>Personal Identity Verification:</strong> A smart card that provides multi-factor authentication.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">PCI DSS</div>
-                <div class="acronym-definition"><strong>Payment Card Industry Data Security Standard:</strong> A set of security standards designed to ensure that all companies that process, store, or transmit credit card information maintain a secure environment.</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="category-block">
-        <div class="category-header" onclick="toggleCategory(this)">Business Docs and Compliance</div>
-        <div class="category-content">
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">AUP</div>
-                <div class="acronym-definition"><strong>Acceptable Use Policy:</strong> A document outlining the acceptable uses of an organization's computer systems and network resources.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">BYOD</div>
-                <div class="acronym-definition"><strong>Bring Your Own Device:</strong> A policy that allows employees to use their personal mobile devices to access enterprise data and systems.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">CYOD</div>
-                <div class="acronym-definition"><strong>Choose Your Own Device:</strong> A mobile device management strategy where employees choose from a list of corporate-approved devices for work.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">COBO</div>
-                <div class="acronym-definition"><strong>Corporate-owned, Business-only:</strong> A mobile device management strategy where devices are owned by the organization and used exclusively for business purposes.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">COPE</div>
-                <div class="acronym-definition"><strong>Corporate Owned, Personally Enabled:</strong> A mobile device management strategy where devices are owned by the organization but can be used for personal activities.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">EULA</div>
-                <div class="acronym-definition"><strong>End User License Agreement:</strong> A legal contract between a software manufacturer or publisher and the user of the software.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">NDA</div>
-                <div class="acronym-definition"><strong>Non-disclosure Agreement:</strong> A legal contract between at least two parties that outlines confidential material, knowledge, or information that the parties wish to share with one another for certain purposes, but wish to restrict access to or by third parties.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">GDPR</div>
-                <div class="acronym-definition"><strong>General Data Protection Regulation:</strong> A regulation in EU law on data protection and privacy in the European Union and the European Economic Area.</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="category-block">
-        <div class="category-header" onclick="toggleCategory(this)">Cryptography & Encryption</div>
-        <div class="category-content">
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">3DES</div>
-                <div class="acronym-definition"><strong>Triple Data Encryption Standard:</strong> A symmetric-key block cipher that applies the DES algorithm three times to each data block; Block ciphers (e.g. AES (Advanced Encryption Standard)) are a type of symmetric encryption that transforms plaintext into ciphertext by processing the plaintext in blocks of fixed size. Stream ciphers (e.g. PRG-based stream ciphers) encrypt data continuously, one character or bit at a time, making them efficient for applications where data is generated in real-time.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">AES</div>
-                <div class="acronym-definition"><strong>Advanced Encryption Standard:</strong> A symmetric-key encryption standard adopted by the U.S. government.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">AES-256</div>
-                <div class="acronym-definition"><strong>Advanced Encryption Standards 256-bit:</strong> A version of the Advanced Encryption Standard (AES) that uses a 256-bit key length.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">ASLR</div>
-                <div class="acronym-definition"><strong>Address Space Layout Randomization:</strong> A security technique that randomly arranges the address space positions of key data areas to protect systems from certain types of cyberattacks, particularly memory corruption vulnerabilities like buffer overflows.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">CA</div>
-                <div class="acronym-definition"><strong>Certificate Authority:</strong> A trusted entity that issues digital certificates.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">CBC</div>
-                <div class="acronym-definition"><strong>Cipher Block Chaining:</strong> A mode of operation for block ciphers that uses an initialization vector (IV) and links each ciphertext block to the previous one.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">CCMP</div>
-                <div class="acronym-definition"><strong>Counter Mode/CBC-MAC Protocol:</strong> An encryption protocol designed for wireless LAN products that implements AES.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">CFB</div>
-                <div class="acronym-definition"><strong>Cipher Feedback:</strong> A mode of operation for block ciphers that makes them into stream ciphers by using the previous ciphertext block as input to the encryption algorithm.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">CRL</div>
-                <div class="acronym-definition"><strong>Certificate Revocation List:</strong> A list of digital certificates that have been revoked by the issuing Certificate Authority before their scheduled expiration.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">CSR</div>
-                <div class="acronym-definition"><strong>Certificate Signing Request:</strong> A message sent from an applicant to a certificate authority to apply for a digital identity certificate.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">CTM</div>
-                <div class="acronym-definition"><strong>Counter Mode:</strong> A mode of operation for block ciphers that turns a block cipher into a stream cipher.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">DES</div>
-                <div class="acronym-definition"><strong>Digital Encryption Standard:</strong> A symmetric-key algorithm for the encryption of electronic data.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">DHE</div>
-                <div class="acronym-definition"><strong>Diffie-Hellman Ephemeral:</strong> A variant of the Diffie-Hellman key exchange that generates a new key pair for each session.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">DSA</div>
-                <div class="acronym-definition"><strong>Digital Signature Algorithm:</strong> A Federal Information Processing Standard (FIPS) for digital signatures.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">ECB</div>
-                <div class="acronym-definition"><strong>Electronic Code Book:</strong> The simplest mode of operation for block ciphers, where each block is encrypted independently.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">ECC</div>
-                <div class="acronym-definition"><strong>Elliptic Curve Cryptography:</strong> A public-key cryptography approach based on the algebraic structure of elliptic curves over finite fields.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">ECDHE</div>
-                <div class="acronym-definition"><strong>Elliptic Curve Diffie-Hellman Ephemeral:</strong> An ephemeral key exchange protocol that uses elliptic curve cryptography.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">ECDSA</div>
-                <div class="acronym-definition"><strong>Elliptic Curve Digital Signature Algorithm:</strong> A variant of the Digital Signature Algorithm (DSA) which uses elliptic curve cryptography.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">EFS</div>
-                <div class="acronym-definition"><strong>Encrypted File System:</strong> A feature of Windows that allows for transparent encryption and decryption of files on NTFS volumes.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">FDE</div>
-                <div class="acronym-definition"><strong>Full Disk Encryption:</strong> A technology that encrypts all data on a disk drive.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">GCM</div>
-                <div class="acronym-definition"><strong>Galois Counter Mode:</strong> A mode of operation for block ciphers that provides both confidentiality and authentication.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">GPG</div>
-                <div class="acronym-definition"><strong>Gnu Privacy Guard:</strong> A free and open-source implementation of the OpenPGP standard.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">HMAC</div>
-                <div class="acronym-definition"><strong>Hashed Message Authentication Code:</strong> A specific type of message authentication code (MAC) involving a cryptographic hash function and a secret cryptographic key.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">HOTP</div>
-                <div class="acronym-definition"><strong>HMAC-based One-time Password:</strong> An algorithm for generating one-time passwords based on HMAC.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">HSM</div>
-                <div class="acronym-definition"><strong>Hardware Security Module:</strong> A physical computing device that safeguards and manages digital keys for strong authentication and provides cryptoprocessing.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">IDEA</div>
-                <div class="acronym-definition"><strong>International Data Encryption Algorithm:</strong> A symmetric-key block cipher that uses a 128-bit key.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">IV</div>
-                <div class="acronym-definition"><strong>Initialization Vector:</strong> A fixed-size input to a cryptographic primitive that is typically required to be random or pseudo-random.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">KDC</div>
-                <div class="acronym-definition"><strong>Key Distribution Center:</strong> A network service that issues session tickets and temporary session keys to users and computers in an Active Directory domain.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">KEK</div>
-                <div class="acronym-definition"><strong>Key Encryption Key:</strong> A key used to encrypt other keys.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">MD5</div>
-                <div class="acronym-definition"><strong>Message Digest 5:</strong> A widely used cryptographic hash function producing a 128-bit (16-byte) hash value.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">OCSP</div>
-                <div class="acronym-definition"><strong>Online Certificate Status Protocol:</strong> An Internet protocol used for obtaining the revocation status of an X.509 digital certificate.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">P12</div>
-                <div class="acronym-definition"><strong>PKCS #12:</strong> A standard for storing private keys with their corresponding public key certificates.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">PBKDF2</div>
-                <div class="acronym-definition"><strong>Password-based Key Derivation Function 2:</strong> A key derivation function that reduces the vulnerability of encrypted keys to brute-force attacks.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">PEM</div>
-                <div class="acronym-definition"><strong>Privacy Enhanced Mail:</strong> A standard for encrypting email.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">PFS</div>
-                <div class="acronym-definition"><strong>Perfect Forward Secrecy:</strong> A feature of a key agreement protocol that gives assurances that session keys will not be compromised even if the long-term secret key used to derive them is compromised.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">PGP</div>
-                <div class="acronym-definition"><strong>Pretty Good Privacy:</strong> A data encryption and decryption computer program that provides cryptographic privacy and authentication for data communication.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">PKCS</div>
-                <div class="acronym-definition"><strong>Public Key Cryptography Standards:</strong> A group of standards designed by RSA Laboratories to ensure compatibility in public-key cryptography.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">PKI</div>
-                <div class="acronym-definition"><strong>Public Key Infrastructure:</strong> A set of roles, policies, and procedures needed to create, manage, distribute, use, store, and revoke digital certificates and manage public-key encryption.</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="category-block">
-        <div class="category-header" onclick="toggleCategory(this)">Network & Communication Protocols</div>
-        <div class="category-content">
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">AH</div>
-                <div class="acronym-definition"><strong>Authentication Header:</strong> A protocol that provides connectionless integrity and data origin authentication for IP datagrams and provides protection against replays; a security protocol used within the IPsec suite to ensure data integrity, data origin authentication, and optional anti-replay protection for IP packets. It verifies that the data was not modified during transmission and confirms the identity of the sender.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">AP</div>
-                <div class="acronym-definition"><strong>Access Point:</strong> A device that allows wireless devices to connect to a wired network.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">API</div>
-                <div class="acronym-definition"><strong>Application Programming Interface:</strong> A set of defined rules that enable different applications to communicate with each other.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">ARP</div>
-                <div class="acronym-definition"><strong>Address Resolution Protocol:</strong> A protocol used to resolve an IP address to a physical MAC address.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">BGP</div>
-                <div class="acronym-definition"><strong>Border Gateway Protocol:</strong> A standardized exterior gateway protocol designed to exchange routing and reachability information among autonomous systems (AS) on the Internet.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">BPDU</div>
-                <div class="acronym-definition"><strong>Bridge Protocol Data Unit:</strong> Data messages exchanged between switches to detect loops and build a spanning tree in a network.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">CHAP</div>
-                <div class="acronym-definition"><strong>Challenge Handshake Authentication Protocol:</strong> An authentication protocol that periodically verifies the identity of the client by using a three-way handshake.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">CSU</div>
-                <div class="acronym-definition"><strong>Channel Service Unit:</strong> A digital interface device that connects a data terminal equipment (DTE) device to a digital circuit.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">DHCP</div>
-                <div class="acronym-definition"><strong>Dynamic Host Configuration Protocol:</strong> A network management protocol used on Internet Protocol (IP) networks for dynamically distributing network configuration parameters.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">DKIM</div>
-                <div class="acronym-definition"><strong>DomainKeys Identified Mail:</strong> An email authentication method designed to detect forged sender addresses in emails.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">DNAT</div>
-                <div class="acronym-definition"><strong>Destination Network Address Translation:</strong> A type of NAT where the destination IP address of a packet is changed.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">DNS</div>
-                <div class="acronym-definition"><strong>Domain Name System:</strong> A hierarchical and decentralized naming system for computers, services, or other resources connected to the Internet or a private network.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">DNSSEC</div>
-                <div class="acronym-definition"><strong>Domain Name System Security Extensions:</strong> A suite of Internet Engineering Task Force (IETF) specifications for securing certain kinds of information provided by the Domain Name System (DNS).</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">DMARC</div>
-                <div class="acronym-definition"><strong>Domain Message Authentication Reporting and Conformance:</strong> An email authentication protocol designed to protect against email spoofing.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">DSL</div>
-                <div class="acronym-definition"><strong>Digital Subscriber Line:</strong> A family of technologies that are used to transmit digital data over telephone lines.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">EAP</div>
-                <div class="acronym-definition"><strong>Extensible Authentication Protocol:</strong> An authentication framework that supports multiple authentication methods.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">ESP</div>
-                <div class="acronym-definition"><strong>Encapsulated Security Payload:</strong> A protocol that provides confidentiality, data origin authentication, connectionless integrity, an anti-replay service, and limited traffic flow confidentiality for IP datagrams.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">FTP</div>
-                <div class="acronym-definition"><strong>File Transfer Protocol:</strong> A standard network protocol used for the transfer of computer files from a server to a client on a computer network.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">FTPS</div>
-                <div class="acronym-definition"><strong>Secured File Transfer Protocol:</strong> An extension of FTP that adds support for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) cryptographic protocols.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">GRE</div>
-                <div class="acronym-definition"><strong>Generic Routing Encapsulation:</strong> A tunneling protocol that can encapsulate a wide variety of network layer protocols inside virtual point-to-point links over an Internet Protocol internetwork.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">HTTP</div>
-                <div class="acronym-definition"><strong>Hypertext Transfer Protocol:</strong> The foundation of data communication for the World Wide Web.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">HTTPS</div>
-                <div class="acronym-definition"><strong>Hypertext Transfer Protocol Secure:</strong> An extension of the Hypertext Transfer Protocol (HTTP) for secure communication over a computer network.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">ICMP</div>
-                <div class="acronym-definition"><strong>Internet Control Message Protocol:</strong> A supporting protocol in the Internet Protocol suite.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">IKE</div>
-                <div class="acronym-definition"><strong>Internet Key Exchange:</strong> The protocol used to set up a security association in the IPsec protocol suite.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">IM</div>
-                <div class="acronym-definition"><strong>Instant Messaging:</strong> A type of online chat that offers real-time text transmission over the Internet.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">IMAP</div>
-                <div class="acronym-definition"><strong>Internet Message Access Protocol:</strong> A standard protocol for accessing email messages from a mail server.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">IP</div>
-                <div class="acronym-definition"><strong>Internet Protocol:</strong> The principal communications protocol in the Internet protocol suite for relaying datagrams across network boundaries.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">IPSec</div>
-                <div class="acronym-definition"><strong>Internet Protocol Security:</strong> A suite of protocols for securing Internet Protocol (IP) communications by authenticating and encrypting each IP packet in a data stream.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">IRC</div>
-                <div class="acronym-definition"><strong>Internet Relay Chat:</strong> A text-based chat system that allows real-time communication among large groups of users.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">L2TP</div>
-                <div class="acronym-definition"><strong>Layer 2 Tunneling Protocol:</strong> A tunneling protocol used to support virtual private networks (VPNs) or as part of the delivery of services by ISPs.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">LAN</div>
-                <div class="acronym-definition"><strong>Local Area Network:</strong> A computer network that interconnects computers within a limited area such as a residence, school, laboratory, university campus, or office building.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">LDAP</div>
-                <div class="acronym-definition"><strong>Lightweight Directory Access Protocol:</strong> An open, vendor-neutral, industry standard application protocol for accessing and maintaining distributed directory information services.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">LEAP</div>
-                <div class="acronym-definition"><strong>Lightweight Extensible Authentication Protocol:</strong> A Cisco proprietary version of EAP used for wireless authentication.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">MAC (Media Access Control)</div>
-                <div class="acronym-definition"><strong>Media Access Control:</strong> A unique identifier assigned to network interfaces for communications within a network segment.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">MAC (Message Authentication Code)</div>
-                <div class="acronym-definition"><strong>Message Authentication Code:</strong> A short piece of information used to authenticate a message and to provide integrity and authenticity.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">MAN</div>
-                <div class="acronym-definition"><strong>Metropolitan Area Network:</strong> A computer network that interconnects users with computer resources in a geographic area or region larger than that covered by even a large local area network (LAN) but smaller than the area covered by a wide area network (WAN).</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">MMS</div>
-                <div class="acronym-definition"><strong>Multimedia Message Service:</strong> A standard way to send messages that include multimedia content to and from mobile phones over a cellular network.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">MPLS</div>
-                <div class="acronym-definition"><strong>Multi-protocol Label Switching:</strong> A routing technique in telecommunications networks that directs data from one network node to the next based on short path labels rather than long network addresses.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">MSCHAP</div>
-                <div class="acronym-definition"><strong>Microsoft Challenge Handshake Authentication Protocol:</strong> Microsoft's proprietary version of the Challenge Handshake Authentication Protocol (CHAP).</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">MTU</div>
-                <div class="acronym-definition"><strong>Maximum Transmission Unit:</strong> The largest packet size that can be transmitted over a network link without fragmentation.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">NAC</div>
-                <div class="acronym-definition"><strong>Network Access Control:</strong> A computer networking solution that uses a set of protocols to define and implement a policy that describes how to secure network nodes when they initially attempt to access the network.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">NAT</div>
-                <div class="acronym-definition"><strong>Network Address Translation:</strong> A method of remapping one IP address space into another by modifying network address information in the IP header of packets while they are in transit across a traffic routing device.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">NFC</div>
-                <div class="acronym-definition"><strong>Near Field Communication:</strong> A set of communication protocols for communication between two electronic devices over a distance of 4 cm or less.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">NGFW</div>
-                <div class="acronym-definition"><strong>Next-generation Firewall:</strong> A part of the third generation of firewall technology, combining a traditional firewall with other network device filtering functions.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">NTLM</div>
-                <div class="acronym-definition"><strong>New Technology LAN Manager:</strong> A suite of Microsoft security protocols that provide authentication, integrity, and confidentiality to users.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">NTP</div>
-                <div class="acronym-definition"><strong>Network Time Protocol:</strong> A networking protocol for clock synchronization between computer systems over packet-switched, variable-latency data networks.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">OSPF</div>
-                <div class="acronym-definition"><strong>Open Shortest Path First:</strong> A routing protocol for Internet Protocol (IP) networks.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">OTA</div>
-                <div class="acronym-definition"><strong>Over the Air:</strong> A method of distributing new software, configuration settings, and even updating encryption keys to devices like cellphones.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">PAC</div>
-                <div class="acronym-definition"><strong>Proxy Auto Configuration:</strong> A method that allows web browsers and other user agents to automatically choose the appropriate proxy server for a given URL.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">PAP</div>
-                <div class="acronym-definition"><strong>Password Authentication Protocol:</strong> A simple authentication protocol used by Point-to-Point Protocol (PPP) to validate users.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">PAT</div>
-                <div class="acronym-definition"><strong>Port Address Translation:</strong> A type of Network Address Translation (NAT) that maps multiple private IP addresses to a single public IP address by using different port numbers.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">PBX</div>
-                <div class="acronym-definition"><strong>Private Branch Exchange:</strong> A private telephone network used within a company or organization.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">POP</div>
-                <div class="acronym-definition"><strong>Post Office Protocol:</strong> An application-layer Internet standard protocol used by local email clients to retrieve email from a remote server over a TCP/IP connection.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">POTS</div>
-                <div class="acronym-definition"><strong>Plain Old Telephone Service:</strong> The traditional analog telephone system.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">PPP</div>
-                <div class="acronym-definition"><strong>Point-to-Point Protocol:</strong> A data link layer (Layer 2) communication protocol used to establish a direct connection between two nodes.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">PPTP</div>
-                <div class="acronym-definition"><strong>Point-to-Point Tunneling Protocol:</strong> An obsolete method for implementing virtual private networks.</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="category-block">
-        <div class="category-header" onclick="toggleCategory(this)">Cyber Threats & Vulnerabilities</div>
-        <div class="category-content">
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">APT</div>
-                <div class="acronym-definition"><strong>Advanced Persistent Threat:</strong> A sophisticated, prolonged cyberattack where an intruder gains access to a network and stays there undetected for a long period of time.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">ATT&CK</div>
-                <div class="acronym-definition"><strong>Adversarial Tactics, Techniques, and Common Knowledge:</strong> A globally accessible knowledge base of adversary tactics and techniques based on real-world observations.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">CSRF</div>
-                <div class="acronym-definition"><strong>Cross-site Request Forgery:</strong> An attack that tricks a web browser into executing an unwanted action on a trusted site where the user is authenticated.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">CVE</div>
-                <div class="acronym-definition"><strong>Common Vulnerability Enumeration:</strong> A list of publicly disclosed cybersecurity vulnerabilities.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">CVSS</div>
-                <div class="acronym-definition"><strong>Common Vulnerability Scoring System:</strong> A free and open industry standard for assessing the severity of computer system security vulnerabilities.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">DDoS</div>
-                <div class="acronym-definition"><strong>Distributed Denial of Service:</strong> A cyberattack where multiple compromised computer systems attack a target, such as a server, website, or other network resource, and cause a denial of service for users of the targeted resource.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">DoS</div>
-                <div class="acronym-definition"><strong>Denial of Service:</strong> A cyberattack where the perpetrator seeks to make a machine or network resource unavailable to its intended users.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">IoC</div>
-                <div class="acronym-definition"><strong>Indicators of Compromise:</strong> Forensic data found on a network or operating system that indicates a probable intrusion.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">OSINT</div>
-                <div class="acronym-definition"><strong>Open-source Intelligence:</strong> Intelligence gathered from publicly available sources.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">OVAL</div>
-                <div class="acronym-definition"><strong>Open Vulnerability Assessment Language:</strong> An international, public, and community effort to standardize how to assess and report upon the machine state of computer systems.</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="category-block">
-        <div class="category-header" onclick="toggleCategory(this)">Security Operations & Management</div>
-        <div class="category-content">
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">AIS</div>
-                <div class="acronym-definition"><strong>Automated Indicator Sharing:</strong> A system for automated sharing of cyber threat indicators and defensive measures; Automated Indicator Sharing (AIS) is a service provided by the Cybersecurity and Infrastructure Security Agency (CISA) that facilitates the exchange of machine-readable cyber threat indicators (CTIs) and defensive measures (DMs) between public and private sector organizations. This initiative aims to improve the cybersecurity posture of participants by sharing information about potential threats and vulnerabilities.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">ALE</div>
-                <div class="acronym-definition"><strong>Annualized Loss Expectancy:</strong> The expected monetary loss for an asset due to a risk over a one-year period.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">ARO</div>
-                <div class="acronym-definition"><strong>Annualized Rate of Occurrence:</strong> The probability that a specific threat will occur in a single year.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">BCP</div>
-                <div class="acronym-definition"><strong>Business Continuity Planning:</strong> The process of creating systems of prevention and recovery to deal with potential threats to a company.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">BIA</div>
-                <div class="acronym-definition"><strong>Business Impact Analysis:</strong> A systematic process to determine and evaluate the potential effects of an interruption to critical business operations.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">BPA</div>
-                <div class="acronym-definition"><strong>Business Partners Agreement:</strong> A legal agreement between two or more partners that outlines the terms and conditions of their partnership.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">CAR</div>
-                <div class="acronym-definition"><strong>Corrective Action Report:</strong> A formal document used to record details of issues, their root causes, and the actions taken to correct them.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">CASB</div>
-                <div class="acronym-definition"><strong>Cloud Access Security Broker:</strong> Software or hardware that acts as an intermediary between users and cloud service providers.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">CERT</div>
-                <div class="acronym-definition"><strong>Computer Emergency Response Team:</strong> An expert group that handles computer security incidents.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">CIO</div>
-                <div class="acronym-definition"><strong>Chief Information Officer:</strong> A senior executive who is responsible for managing and overseeing the information technology (IT) systems of an organization.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">CIRT</div>
-                <div class="acronym-definition"><strong>Computer Incident Response Team:</strong> A team responsible for responding to computer security incidents.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">COOP</div>
-                <div class="acronym-definition"><strong>Continuity of Operation Planning:</strong> Efforts to ensure that essential functions continue during a wide range of emergencies or disasters.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">CP</div>
-                <div class="acronym-definition"><strong>Contingency Planning:</strong> The process of preparing for unforeseen events or disasters.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">CSO</div>
-                <div class="acronym-definition"><strong>Chief Security Officer:</strong> A senior-level executive responsible for an organization's security.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">CSP</div>
-                <div class="acronym-definition"><strong>Cloud Service Provider:</strong> A third-party company that offers cloud-based computing services to customers.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">CTO</div>
-                <div class="acronym-definition"><strong>Chief Technology Officer:</strong> A senior executive who is responsible for the overall technology strategy of an organization.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">DBA</div>
-                <div class="acronym-definition"><strong>Database Administrator:</strong> A person responsible for the design, implementation, maintenance, and repair of an organization's databases.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">DPO</div>
-                <div class="acronym-definition"><strong>Data Privacy Officer:</strong> A person responsible for overseeing data protection strategy and implementation to ensure compliance with GDPR requirements.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">DRP</div>
-                <div class="acronym-definition"><strong>Disaster Recovery Plan:</strong> A documented process or set of procedures to recover and protect a business IT infrastructure in the event of a disaster.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">HA</div>
-                <div class="acronym-definition"><strong>High Availability:</strong> A system or component that is continuously operational for a desirably long length of time.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">HIDS</div>
-                <div class="acronym-definition"><strong>Host-based Intrusion Detection System:</strong> An intrusion detection system that monitors and analyzes the internals of a computing system as well as the network packets on its network interfaces.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">HIPS</div>
-                <div class="acronym-definition"><strong>Host-based Intrusion Prevention System:</strong> An intrusion prevention system that monitors a single host for suspicious activity.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">IdP</div>
-                <div class="acronym-definition"><strong>Identity Provider:</strong> A system entity that creates, maintains, and manages identity information for principals and provides authentication services to relying party applications.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">IDS</div>
-                <div class="acronym-definition"><strong>Intrusion Detection System:</strong> A device or software application that monitors a network or systems for malicious activity or policy violations.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">IR</div>
-                <div class="acronym-definition"><strong>Incident Response:</strong> An organized approach to addressing and managing the aftermath of a security breach or cyberattack.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">IRP</div>
-                <div class="acronym-definition"><strong>Incident Response Plan:</strong> A documented plan for responding to security incidents.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">ISO</div>
-                <div class="acronym-definition"><strong>International Standards Organization:</strong> An international standard-setting body composed of representatives from various national standards organizations.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">ISP</div>
-                <div class="acronym-definition"><strong>Internet Service Provider:</strong> An organization that provides services for accessing, using, or participating in the Internet.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">ISSO</div>
-                <div class="acronym-definition"><strong>Information Systems Security Officer:</strong> A person responsible for the overall information security posture of a system or organization.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">MOA</div>
-                <div class="acronym-definition"><strong>Memorandum of Agreement:</strong> A document that describes the terms and conditions of a mutual understanding between two or more parties.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">MOU</div>
-                <div class="acronym-definition"><strong>Memorandum of Understanding:</strong> A formal agreement between two or more parties.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">MSA</div>
-                <div class="acronym-definition"><strong>Master Service Agreement:</strong> A contract that specifies the terms that will govern future agreements between parties.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">MSP</div>
-                <div class="acronym-definition"><strong>Managed Service Provider:</strong> A company that remotely manages a customer's IT infrastructure and/or end-user systems.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">MSSP</div>
-                <div class="acronym-definition"><strong>Managed Security Service Provider:</strong> An organization that provides outsourced monitoring and management of security devices and systems.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">MTBF</div>
-                <div class="acronym-definition"><strong>Mean Time Between Failures:</strong> The predicted elapsed time between inherent failures of a mechanical or electronic system during normal system operation.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">MTTF</div>
-                <div class="acronym-definition"><strong>Mean Time to Failure:</strong> The average time a device or system is expected to function before it fails completely.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">MTTR</div>
-                <div class="acronym-definition"><strong>Mean Time to Recover:</strong> The average time it takes to repair a failed system or component.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">NIDS</div>
-                <div class="acronym-definition"><strong>Network-based Intrusion Detection System:</strong> An intrusion detection system that monitors network traffic to detect suspicious activity.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">NIPS</div>
-                <div class="acronym-definition"><strong>Network-based Intrusion Prevention System:</strong> An intrusion prevention system that monitors network traffic to detect and prevent suspicious activity.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">NIST</div>
-                <div class="acronym-definition"><strong>National Institute of Standards & Technology:</strong> A physical sciences laboratory and non-regulatory agency of the United States Department of Commerce.</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="category-block">
-        <div class="category-header" onclick="toggleCategory(this)">Hardware, Software & Infrastructure</div>
-        <div class="category-content">
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">AI</div>
-                <div class="acronym-definition"><strong>Artificial Intelligence:</strong> The simulation of human intelligence processes by machines.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">AV</div>
-                <div class="acronym-definition"><strong>Antivirus:</strong> Software designed to detect, prevent, and remove malicious software.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">BASH</div>
-                <div class="acronym-definition"><strong>Bourne Again Shell:</strong> A Unix shell and command language interpreter.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">BIOS</div>
-                <div class="acronym-definition"><strong>Basic Input/Output System:</strong> Firmware used to perform hardware initialization during the booting process and to provide runtime services for operating systems and programs.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">CCTV</div>
-                <div class="acronym-definition"><strong>Closed-circuit Television:</strong> A video system that is locally monitored and not broadcast publicly.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">CMS</div>
-                <div class="acronym-definition"><strong>Content Management System:</strong> A software application or set of related programs used to create and manage digital content.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">CRC</div>
-                <div class="acronym-definition"><strong>Cyclical Redundancy Check:</strong> An error-detecting code used to detect accidental changes to raw data.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">DLL</div>
-                <div class="acronym-definition"><strong>Dynamic Link Library:</strong> A Microsoft implementation of the shared library concept.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">EDR</div>
-                <div class="acronym-definition"><strong>Endpoint Detection and Response:</strong> A cybersecurity solution that continuously monitors and responds to cyber threats on endpoints.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">ERP</div>
-                <div class="acronym-definition"><strong>Enterprise Resource Planning:</strong> A system that integrates all facets of an operation, including product planning, development, manufacturing, sales, and marketing.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">ESN</div>
-                <div class="acronym-definition"><strong>Electronic Serial Number:</strong> A unique identification number embedded in a mobile phone by the manufacturer.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">FPGA</div>
-                <div class="acronym-definition"><strong>Field Programmable Gate Array:</strong> An integrated circuit designed to be configured by a customer or a designer after manufacturing.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">GPS</div>
-                <div class="acronym-definition"><strong>Global Positioning System:</strong> A satellite-based navigation system that provides location and time information.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">GPU</div>
-                <div class="acronym-definition"><strong>Graphics Processing Unit:</strong> A specialized electronic circuit designed to rapidly manipulate and alter memory to accelerate the creation of images in a frame buffer intended for output to a display device.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">HDD</div>
-                <div class="acronym-definition"><strong>Hard Disk Drive:</strong> An electromechanical data storage device that stores and retrieves digital data using rapidly rotating platters coated with magnetic material.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">HTML</div>
-                <div class="acronym-definition"><strong>Hypertext Markup Language:</strong> The standard markup language for documents designed to be displayed in a web browser.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">HVAC</div>
-                <div class="acronym-definition"><strong>Heating, Ventilation Air Conditioning:</strong> Technologies for indoor and vehicular environmental comfort.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">IaaS</div>
-                <div class="acronym-definition"><strong>Infrastructure as a Service:</strong> A cloud computing service model that provides virtualized computing resources over the internet.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">IaC</div>
-                <div class="acronym-definition"><strong>Infrastructure as Code:</strong> The managing and provisioning of computer data centers through machine-readable definition files.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">ICS</div>
-                <div class="acronym-definition"><strong>Industrial Control Systems:</strong> Computerized systems that control industrial processes.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">IDF</div>
-                <div class="acronym-definition"><strong>Intermediate Distribution Frame:</strong> A cable rack used to connect telephone company lines to the internal network.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">IoT</div>
-                <div class="acronym-definition"><strong>Internet of Things:</strong> The inter-networking of physical devices, vehicles, home appliances, and other items embedded with electronics, software, sensors, actuators, and network connectivity which enable these objects to collect and exchange data.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">MaaS</div>
-                <div class="acronym-definition"><strong>Monitoring as a Service:</strong> A cloud-based service that provides monitoring capabilities for various IT infrastructure components.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">MBR</div>
-                <div class="acronym-definition"><strong>Master Boot Record:</strong> The first sector of a data storage device.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">MDF</div>
-                <div class="acronym-definition"><strong>Main Distribution Frame:</strong> A signal distribution frame or cable rack used to interconnect and manage telecommunication wiring between itself and any number of intermediate distribution frames (IDFs) and equipment.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">MFD</div>
-                <div class="acronym-definition"><strong>Multifunction Device:</strong> A device that performs multiple functions, such as printing, scanning, copying, and faxing.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">MFP</div>
-                <div class="acronym-definition"><strong>Multifunction Printer:</strong> A device that combines the functionality of a printer, copier, scanner, and/or fax machine.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">ML</div>
-                <div class="acronym-definition"><strong>Machine Learning:</strong> A type of artificial intelligence that provides computers with the ability to learn without being explicitly programmed.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">NTFS</div>
-                <div class="acronym-definition"><strong>New Technology File System:</strong> The default file system for the Windows NT family of operating systems.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">OID</div>
-                <div class="acronym-definition"><strong>Object Identifier:</strong> An identifier mechanism standardized by the ITU-T and ISO for naming any object, concept, or "thing" with an unambiguous name, for use in a global information system.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">OS</div>
-                <div class="acronym-definition"><strong>Operating System:</strong> System software that manages computer hardware and software resources and provides common services for computer programs.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">OT</div>
-                <div class="acronym-definition"><strong>Operational Technology:</strong> Hardware and software that detects or causes a change through the direct monitoring and/or control of physical devices, processes, and events in the enterprise.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">P2P</div>
-                <div class="acronym-definition"><strong>Peer to Peer:</strong> A distributed application architecture that partitions tasks or workloads between peers.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">PaaS</div>
-                <div class="acronym-definition"><strong>Platform as a Service:</strong> A cloud computing service model that provides customers with a complete platform to develop, run, and manage applications without the complexity of building and maintaining the infrastructure typically associated with developing and launching an app.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">PAM (Pluggable Authentication Modules)</div>
-                <div class="acronym-definition"><strong>Pluggable Authentication Modules:</strong> A mechanism that integrates multiple low-level authentication schemes into a high-level API.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">PCAP</div>
-                <div class="acronym-definition"><strong>Packet Capture:</strong> The process of intercepting and logging traffic that passes over a digital network.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">PDU</div>
-                <div class="acronym-definition"><strong>Power Distribution Unit:</strong> A device fitted with multiple outputs designed to distribute electric power to computers or networking equipment within a rack.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">PED</div>
-                <div class="acronym-definition"><strong>Personal Electronic Device:</strong> Any portable electronic device capable of communication, data processing, or entertainment.</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="category-block">
-        <div class="category-header" onclick="toggleCategory(this)">Miscellaneous & Certifications</div>
-        <div class="category-content">
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">CompTIA: Security+ SY0-701 Certification Exam: Exam Objectives Version 6.0</div>
-                <div class="acronym-definition"><strong>CompTIA: Security+ SY0-701 Certification Exam: Exam Objectives Version 6.0:</strong> The official exam objectives for the CompTIA Security+ SY0-701 certification.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">Copyright</div>
-                <div class="acronym-definition"><strong>© 2023 CompTIA, Inc. All rights reserved.:</strong> A legal notice indicating the copyright holder and year.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">FRR</div>
-                <div class="acronym-definition"><strong>False Rejection Rate:</strong> The rate at which legitimate users are falsely rejected by a biometric system.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">IEEE</div>
-                <div class="acronym-definition"><strong>Institute of Electrical and Electronics Engineers:</strong> A professional association for electronic engineering and electrical engineering.</div>
-            </div>
-            <div class="acronym-item">
-                <div class="acronym-header" onclick="toggleDefinition(this)">PEAP</div>
-                <div class="acronym-definition"><strong>Protected Extensible Authentication Protocol:</strong> A protocol that encapsulates EAP within a Transport Layer Security (TLS) tunnel.</div>
-            </div>
+        <div id="glossary-container" class="space-y-4">
+            <!-- Content will be dynamically loaded here by JavaScript -->
         </div>
     </div>
 
     <script>
-        function toggleCategory(element) {
-            element.classList.toggle('active');
-            let content = element.nextElementSibling;
-            if (content.style.display === "block") {
-                content.style.display = "none";
-            } else {
-                content.style.display = "block";
+        // Data structure for acronyms, categorized and defined
+        const acronymData = {
+            "Security & Authentication": {
+                "2FA": "Two-factor Authentication: A security process in which a user provides two different authentication factors to verify themselves.",
+                "3DES": "Triple Data Encryption Standard: A symmetric-key block cipher, which applies the DES cipher algorithm three times to each data block.",
+                "AAA": "Authentication, Authorization, and Accounting: A framework for controlling access to computer resources, enforcing policies, auditing usage, and providing information necessary to bill for services.",
+                "ACL": "Access Control List: A list of permissions associated with an object, such as a file or directory, specifying which users or system processes are granted access to objects, and what operations are allowed on given objects.",
+                "AES": "Advanced Encryption Standard: A symmetric encryption algorithm chosen by NIST to replace DES.",
+                "AES-256": "Advanced Encryption Standards 256-bit: A version of the AES algorithm that uses a 256-bit key length.",
+                "AH": "Authentication Header: A protocol within IPSec that provides authentication and integrity for IP packets.",
+                "AUP": "Acceptable Use Policy: A document outlining the acceptable uses of an organization's computer systems and network resources.",
+                "AV": "Antivirus: Software designed to detect, prevent, and remove malicious software.",
+                "CA": "Certificate Authority: A trusted entity that issues digital certificates.",
+                "CAPTCHA": "Completely Automated Public Turing Test to Tell Computers and Humans Apart: A type of challenge-response test used to determine whether the user is human or not.",
+                "CASB": "Cloud Access Security Broker: Software that sits between cloud service users and cloud applications to enforce security policies.",
+                "CBC": "Cipher Block Chaining: A mode of operation for block ciphers, which makes each ciphertext block dependent on all previous plaintext blocks.",
+                "CCMP": "Counter Mode/CBC-MAC Protocol: An encryption protocol designed for Wireless LAN products that implements the standards of IEEE 802.11i.",
+                "CERT": "Computer Emergency Response Team: A group of information security experts who handle computer security incidents.",
+                "CFB": "Cipher Feedback: A mode of operation for block ciphers, which converts a block cipher into a self-synchronizing stream cipher.",
+                "CHAP": "Challenge Handshake Authentication Protocol: An authentication protocol used by PPP servers to validate the identity of remote clients.",
+                "CIA": "Confidentiality, Integrity, Availability: The three core principles of information security.",
+                "CIRT": "Computer Incident Response Team: Similar to CERT, a team responsible for responding to cybersecurity incidents.",
+                "CRL": "Certificate Revocation List: A list of digital certificates that have been revoked by the issuing Certificate Authority before their scheduled expiration date.",
+                "CSR": "Certificate Signing Request: A block of encrypted text that is generated by a web server and contains information that will be included in a certificate.",
+                "CSRF": "Cross-site Request Forgery: An attack that forces an end user to execute unwanted actions on a web application in which they're currently authenticated.",
+                "CTM": "Counter Mode: A mode of operation for block ciphers that turns them into stream ciphers.",
+                "DAC": "Discretionary Access Control: An access control model where the owner of the resource can control permissions to it.",
+                "DEP": "Data Execution Prevention: A security feature that helps prevent code execution from non-executable memory regions.",
+                "DES": "Digital Encryption Standard: An older symmetric-key block cipher.",
+                "DHE": "Diffie-Hellman Ephemeral: An ephemeral key agreement protocol that provides perfect forward secrecy.",
+                "DKIM": "DomainKeys Identified Mail: An email authentication method designed to detect forged sender addresses in emails.",
+                "DLP": "Data Loss Prevention: A set of tools and processes used to ensure that sensitive data is not lost, misused, or accessed by unauthorized users.",
+                "DMARC": "Domain Message Authentication Reporting and Conformance: An email authentication protocol that builds on SPF and DKIM.",
+                "DNSSEC": "Domain Name System Security Extensions: A suite of IETF specifications for securing certain kinds of information provided by the Domain Name System.",
+                "DoS": "Denial of Service: An attack attempting to make a machine or network resource unavailable to its intended users.",
+                "DSA": "Digital Signature Algorithm: A Federal Information Processing Standard for digital signatures.",
+                "EAP": "Extensible Authentication Protocol: An authentication framework frequently used in wireless networks and Point-to-Point connections.",
+                "ECB": "Electronic Code Book: A simple mode of operation for block ciphers where each block is encrypted independently.",
+                "ECC": "Elliptic Curve Cryptography: A public-key cryptography approach based on the algebraic structure of elliptic curves over finite fields.",
+                "ECDHE": "Elliptic Curve Diffie-Hellman Ephemeral: An ephemeral key agreement protocol that uses ECC for key exchange.",
+                "ECDSA": "Elliptic Curve Digital Signature Algorithm: A digital signature algorithm based on elliptic curve cryptography.",
+                "EFS": "Encrypted File System: A feature of Windows that allows for transparent encryption of individual files and folders on NTFS volumes.",
+                "ESP": "Encapsulated Security Payload: A protocol within IPSec that provides confidentiality, data origin authentication, connectionless integrity, and an anti-replay service.",
+                "FACL": "File System Access Control List: An access control list specifically for file systems.",
+                "FDE": "Full Disk Encryption: The encryption of all data on a hard drive.",
+                "FIM": "File Integrity Management: A security process that monitors and detects unauthorized changes to critical files.",
+                "FRR": "False Rejection Rate: In biometrics, the rate at which legitimate users are incorrectly rejected.",
+                "FTPS": "Secured File Transfer Protocol: FTP over SSL/TLS.",
+                "GCM": "Galois Counter Mode: A mode of operation for block ciphers that provides authenticated encryption.",
+                "GPG": "Gnu Privacy Guard: A free implementation of the OpenPGP standard.",
+                "HMAC": "Hashed Message Authentication Code: A specific type of message authentication code (MAC) involving a cryptographic hash function and a secret cryptographic key.",
+                "HOTP": "HMAC-based One-time Password: A one-time password algorithm based on HMAC.",
+                "HSM": "Hardware Security Module: A physical computing device that safeguards and manages digital keys for strong authentication and provides cryptoprocessing.",
+                "HTTPS": "Hypertext Transfer Protocol Secure: A secure version of HTTP that uses SSL/TLS for encryption.",
+                "IAM": "Identity and Access Management: A framework of policies and technologies to ensure that the right individuals have the right access to the right resources at the right time and for the right reasons.",
+                "IDEA": "International Data Encryption Algorithm: A symmetric-key block cipher.",
+                "IdP": "Identity Provider: A system entity that creates, maintains, and manages identity information for principals and provides authentication services to relying party applications.",
+                "IKE": "Internet Key Exchange: The protocol used to set up a security association in the IPsec protocol suite.",
+                "IoT": "Internet of Things: The interconnection via the Internet of computing devices embedded in everyday objects, enabling them to send and receive data.",
+                "IPSec": "Internet Protocol Security: A suite of protocols for securing Internet Protocol (IP) communications by authenticating and encrypting each IP packet of a communication session.",
+                "ISSO": "Information Systems Security Officer: A person responsible for the overall security of information systems.",
+                "IV": "Initialization Vector: A fixed-size input to a cryptographic primitive that is typically required to be random or pseudo-random.",
+                "KDC": "Key Distribution Center: A network service that provides session tickets and temporary session keys to users and computers.",
+                "KEK": "Key Encryption Key: A key used to encrypt other keys.",
+                "LEAP": "Lightweight Extensible Authentication Protocol: A Cisco-proprietary version of EAP.",
+                "MAC (Mandatory Access Control)": "Mandatory Access Control: An access control model where the operating system restricts a subject's ability to access or perform any operation on an object.",
+                "MAC (Message Authentication Code)": "Message Authentication Code: A small piece of data that authenticates a message and provides integrity and authenticity.",
+                "MD5": "Message Digest 5: A widely used cryptographic hash function, now considered insecure for cryptographic purposes.",
+                "MFA": "Multifactor Authentication: Same as 2FA.",
+                "MSCHAP": "Microsoft Challenge Handshake Authentication Protocol: Microsoft's version of CHAP.",
+                "NAC": "Network Access Control: A computer networking solution that uses a set of protocols to define and implement a policy that describes how to secure access to network nodes by devices when they initially attempt to access the network.",
+                "NDA": "Non-disclosure Agreement: A legal contract that outlines confidential material, knowledge, or information that the parties wish to share with one another for certain purposes, but wish to restrict access to.",
+                "NGFW": "Next-generation Firewall: A part of the third generation of firewall technology, combining a traditional firewall with other network device filtering functionalities.",
+                "NIST": "National Institute of Standards & Technology: A physical sciences laboratory and a non-regulatory agency of the United States Department of Commerce with a mission to promote U.S. innovation and industrial competitiveness by advancing measurement science, standards, and technology.",
+                "NTLM": "New Technology LAN Manager: A suite of Microsoft security protocols that provide authentication, integrity, and confidentiality to users.",
+                "OAUTH": "Open Authorization: An open standard for authorization, commonly used as a way for Internet users to grant websites or applications access to their information on other websites but without giving them the passwords.",
+                "OCSP": "Online Certificate Status Protocol: An Internet protocol used for obtaining the revocation status of an X.509 digital certificate.",
+                "P12": "PKCS #12: A file format for storing cryptographic objects as a single file.",
+                "PAM (Privileged Access Management)": "Privileged Access Management: Solutions that help organizations manage and secure privileged accounts.",
+                "PAM (Pluggable Authentication Modules)": "Pluggable Authentication Modules: A mechanism that allows multiple low-level authentication schemes to be plugged into a higher-level API.",
+                "PAP": "Password Authentication Protocol: A simple authentication protocol.",
+                "PBKDF2": "Password-based Key Derivation Function 2: A key derivation function that reduces the vulnerability of encrypted keys to brute-force attacks.",
+                "PCI DSS": "Payment Card Industry Data Security Standard: An information security standard for organizations that handle branded credit cards from the major card schemes.",
+                "PEAP": "Protected Extensible Authentication Protocol: A protocol that encapsulates EAP within a TLS tunnel.",
+                "PEM": "Privacy Enhanced Mail: An old standard for securing email, also commonly refers to a file format for cryptographic keys and certificates.",
+                "PFS": "Perfect Forward Secrecy: A feature of an encryption system that ensures that a compromise of a key will not compromise past or future sessions.",
+                "PGP": "Pretty Good Privacy: A data encryption and decryption computer program that provides cryptographic privacy and authentication for data communication.",
+                "PHI": "Personal Health Information: Any information about health status, provision of health care, or payment for health care that is created or collected by a Covered Entity, and can be linked to an individual.",
+                "PII": "Personally Identifiable Information: Information that can be used to identify, contact, or locate a single person, or can be used with other sources to identify a single individual.",
+                "PIV": "Personal Identity Verification: A standard for smart cards issued by U.S. federal agencies.",
+                "PKCS": "Public Key Cryptography Standards: A group of standards for public-key cryptography.",
+                "PKI": "Public Key Infrastructure: A set of roles, policies, and procedures needed to create, manage, distribute, use, store, and revoke digital certificates.",
+                "PPTP": "Point-to-Point Tunneling Protocol: A method for implementing virtual private networks (VPNs).",
+                "PSK": "Pre-shared Key: A secret key that has been shared between two parties prior to its use.",
+                "PUP": "Potentially Unwanted Program: A software program that a user might perceive as unwanted due to its behavior, such as adware or spyware.",
+                "RA (Recovery Agent)": "Recovery Agent: A designated user or system that can decrypt data encrypted by other users or systems, typically for data recovery purposes.",
+                "RA (Registration Authority)": "Registration Authority: An entity that assists a Certificate Authority (CA) in the certificate issuance process.",
+                "RADIUS": "Remote Authentication Dial-in User Service: A networking protocol that provides centralized Authentication, Authorization, and Accounting (AAA) management for users connecting to a network service.",
+                "RBAC (Role-based Access Control)": "Role-based Access Control: An access control model based on a user's role within an organization.",
+                "RBAC (Rule-based Access Control)": "Rule-based Access Control: An access control model where access is granted or denied based on a set of rules.",
+                "RC4": "Rivest Cipher version 4: A stream cipher.",
+                "RIPEMD": "RACE Integrity Primitives Evaluation Message Digest: A family of cryptographic hash functions.",
+                "RSA": "Rivest, Shamir, & Adleman: A public-key cryptosystem widely used for secure data transmission.",
+                "S/MIME": "Secure/Multipurpose Internet Mail Extensions: A standard for public key encryption and signing of MIME data.",
+                "SAE": "Simultaneous Authentication of Equals: A key exchange method used in WPA3.",
+                "SAML": "Security Assertions Markup Language: An XML-based open standard for exchanging authentication and authorization data between an identity provider and a service provider.",
+                "SAN (Subject Alternative Name)": "Subject Alternative Name: An extension to X.509 certificates that allows various values to be associated with a security certificate using a `subjectAltName` field. These values are called 'Subject Alternative Names' (SANs).",
+                "SASE": "Secure Access Service Edge: A cloud-native security model that combines networking and security functions into a single cloud-delivered service.",
+                "SCAP": "Security Content Automation Protocol: A suite of specifications that standardize the way that security tools and services communicate security-related information.",
+                "SCEP": "Simple Certificate Enrollment Protocol: A protocol used to simplify the enrollment of certificates to IP-based network devices.",
+                "SE Linux": "Security-enhanced Linux: A security module of the Linux kernel that provides a mechanism for supporting access control security policies.",
+                "SED": "Self-encrypting Drives: Hard drives that automatically encrypt all data written to them.",
+                "SFTP": "Secured File Transfer Protocol: File Transfer Protocol over SSH.",
+                "SHA": "Secure Hashing Algorithm: A family of cryptographic hash functions.",
+                "SHTTP": "Secure Hypertext Transfer Protocol: An older, less common secure version of HTTP.",
+                "SPF": "Sender Policy Framework: An email authentication method designed to detect forged sender addresses in emails.",
+                "SPIM": "Spam over Internet Messaging: Unsolicited messages sent over instant messaging.",
+                "SQLi": "SQL Injection: A code injection technique used to attack data-driven applications.",
+                "SRTP": "Secure Real-Time Protocol: A profile for RTP that adds security features such as confidentiality, message authentication, and replay protection.",
+                "SSH": "Secure Shell: A cryptographic network protocol for operating network services securely over an unsecured network.",
+                "SSL": "Secure Sockets Layer: An older cryptographic protocol for securing communications over a computer network, largely superseded by TLS.",
+                "SSO": "Single Sign-on: An authentication scheme that allows a user to log in with a single ID and password to gain access to multiple related but independent software systems.",
+                "SWG": "Secure Web Gateway: A security solution that filters unwanted software/malware from user-initiated web traffic.",
+                "TACACS+": "Terminal Access Controller Access Control System: A proprietary Cisco protocol providing centralized authentication, authorization, and accounting (AAA) services.",
+                "TGT": "Ticket Granting Ticket: A special Kerberos ticket that allows a client to obtain more service tickets without re-authenticating.",
+                "TKIP": "Temporal Key Integrity Protocol: An encryption protocol used in WPA.",
+                "TLS": "Transport Layer Security: A cryptographic protocol that provides end-to-end communications security over computer networks.",
+                "TOTP": "Time-based One-time Password: A one-time password algorithm that uses a time-based factor.",
+                "TPM": "Trusted Platform Module: A secure cryptoprocessor that is designed to secure hardware by integrating cryptographic keys into devices.",
+                "TSIG": "Transaction Signature: A mechanism for authenticating DNS updates and responses.",
+                "UEFI": "Unified Extensible Firmware Interface: A software interface between an operating system and platform firmware.",
+                "UEM": "Unified Endpoint Management: A holistic approach to managing and securing all endpoints from a single console.",
+                "UTM": "Unified Threat Management: A single security solution that combines multiple security functions (e.g., firewall, IPS, antivirus).",
+                "WAF": "Web Application Firewall: A firewall that monitors, filters, or blocks HTTP traffic to and from a web application.",
+                "WEP": "Wired Equivalent Privacy: An old security algorithm for wireless networks, now considered insecure.",
+                "WPA": "Wi-Fi Protected Access: A security protocol for wireless networks, superseding WEP.",
+                "WPS": "Wi-Fi Protected Setup: A network security standard that allows users to easily add new devices to a wireless network without entering long passphrases.",
+                "WTLS": "Wireless TLS: A version of TLS for wireless environments.",
+                "XOR": "Exclusive Or: A logical operation often used in cryptography.",
+                "XSRF": "Cross-site Request Forgery: Same as CSRF.",
+                "XSS": "Cross-site Scripting: A type of security vulnerability typically found in web applications.",
+            },
+            "Networking & Protocols": {
+                "AP": "Access Point: A device that creates a wireless local area network (WLAN).",
+                "ARP": "Address Resolution Protocol: A protocol used to resolve IP addresses to MAC addresses.",
+                "BGP": "Border Gateway Protocol: A standardized exterior gateway protocol designed to exchange routing and reachability information among autonomous systems.",
+                "BPDU": "Bridge Protocol Data Unit: Data messages exchanged between switches using the Spanning Tree Protocol (STP).",
+                "CRC": "Cyclical Redundancy Check: An error-detecting code used to detect accidental changes to raw data.",
+                "CSU": "Channel Service Unit: A digital interface device that connects a data terminal equipment (DTE) device to a digital circuit.",
+                "DHCP": "Dynamic Host Configuration Protocol: A network management protocol used to automatically assign IP addresses and other communication parameters to devices connected to a network.",
+                "DNAT": "Destination Network Address Translation: A type of NAT where the destination IP address of a packet is modified.",
+                "DNS": "Domain Name System: A hierarchical and decentralized naming system for computers, services, or other resources connected to the Internet or a private network.",
+                "DSL": "Digital Subscriber Line: A family of technologies that are used to transmit digital data over telephone lines.",
+                "FTP": "File Transfer Protocol: A standard network protocol used for the transfer of computer files between a client and server on a computer network.",
+                "GRE": "Generic Routing Encapsulation: A tunneling protocol that can encapsulate a wide variety of network layer protocols inside virtual point-to-point links.",
+                "HTTP": "Hypertext Transfer Protocol: The underlying protocol used by the World Wide Web.",
+                "ICMP": "Internet Control Message Protocol: A supporting protocol in the Internet Protocol suite, used by network devices to send error messages and operational information.",
+                "IEEE": "Institute of Electrical and Electronics Engineers: A professional association for electronic engineering and electrical engineering.",
+                "IMAP": "Internet Message Access Protocol: An Internet standard protocol used by email clients to retrieve email messages from a mail server over a TCP/IP connection.",
+                "IP": "Internet Protocol: The principal communications protocol in the Internet protocol suite for relaying datagrams across network boundaries.",
+                "LAN": "Local Area Network: A computer network that interconnects computers within a limited area.",
+                "L2TP": "Layer 2 Tunneling Protocol: A tunneling protocol used to support virtual private networks (VPNs).",
+                "LDAP": "Lightweight Directory Access Protocol: An open, vendor-neutral, industry standard application protocol for accessing and maintaining distributed directory information services.",
+                "MAC (Media Access Control)": "Media Access Control: A sublayer of the data link layer (Layer 2) of the Open Systems Interconnection (OSI) model, which provides addressing and channel access control mechanisms.",
+                "MAN": "Metropolitan Area Network: A computer network that interconnects users with computer resources in a geographic region larger than that covered by a local area network (LAN) but smaller than the area covered by a wide area network (WAN).",
+                "MPLS": "Multi-protocol Label Switching: A protocol for speeding up network traffic flow and enabling better traffic management.",
+                "MTU": "Maximum Transmission Unit: The size of the largest protocol data unit that can be passed in a single network layer transaction.",
+                "NAT": "Network Address Translation: A method of remapping one IP address space into another by modifying network address information in the IP header of packets.",
+                "NTP": "Network Time Protocol: A networking protocol for clock synchronization between computer systems over packet-switched, variable-latency data networks.",
+                "OSPF": "Open Shortest Path First: A routing protocol for IP networks.",
+                "PAT": "Port Address Translation: A type of NAT where multiple private IP addresses are mapped to a single public IP address using different port numbers.",
+                "PCAP": "Packet Capture: A file format used to store network packet data.",
+                "POP": "Post Office Protocol: An application-layer Internet standard protocol used by local email clients to retrieve email from a remote server over a TCP/IP connection.",
+                "PPP": "Point-to-Point Protocol: A data link layer (layer 2) communications protocol used to establish a direct connection between two nodes.",
+                "POTS": "Plain Old Telephone Service: The standard voice-grade telephone service.",
+                "RAS": "Remote Access Server: A server that provides a gateway for remote users to connect to a network.",
+                "RDP": "Remote Desktop Protocol: A proprietary protocol developed by Microsoft, which provides a user with a graphical interface to connect to another computer over a network connection.",
+                "RTP": "Real-time Transport Protocol: A network protocol for delivering audio and video over IP networks.",
+                "SD-WAN": "Software-defined Wide Area Network: An approach to managing a WAN that uses software-defined networking concepts.",
+                "SDN": "Software-defined Networking: An approach to network management that enables dynamic, programmatically efficient network configuration.",
+                "SMB": "Server Message Block: A network file sharing protocol.",
+                "SMS": "Short Message Service: A text messaging service component of most telephone, Internet, and mobile device systems.",
+                "SMTP": "Simple Mail Transfer Protocol: A standard communication protocol for sending electronic mail.",
+                "SMTPS": "Simple Mail Transfer Protocol Secure: SMTP over SSL/TLS.",
+                "SNMP": "Simple Network Management Protocol: An Internet Standard protocol for collecting and organizing information about managed devices on IP networks.",
+                "SOAP": "Simple Object Access Protocol: A messaging protocol specification for exchanging structured information in the implementation of web services.",
+                "TCP/IP": "Transmission Control Protocol/Internet Protocol: The fundamental protocols of the Internet.",
+                "UDP": "User Datagram Protocol: A connectionless protocol that, like TCP, runs on top of IP networks.",
+                "URI": "Uniform Resource Identifier: A string of characters that identifies a name or a web resource.",
+                "URL": "Universal Resource Locator: A specific type of URI that provides a means of locating a resource by describing its primary access mechanism and network location.",
+                "VLAN": "Virtual Local Area Network: A logical grouping of network devices that can communicate with each other as if they were on the same physical network, regardless of their physical location.",
+                "VLSM": "Variable Length Subnet Masking: A technique that allows network administrators to divide an IP address space into subnets of different sizes.",
+                "VoIP": "Voice over IP: A methodology and group of technologies for the delivery of voice communications and multimedia sessions over Internet Protocol (IP) networks.",
+                "VPC": "Virtual Private Cloud: A virtual network dedicated to your AWS account. It is logically isolated from other virtual networks in the AWS Cloud.",
+                "VPN": "Virtual Private Network: A network that extends across a public network and enables users to send and receive data across shared or public networks as if their computing devices were directly connected to the private network.",
+                "WAP": "Wireless Access Point: Same as AP.",
+            },
+            "Data & Storage": {
+                "HDD": "Hard Disk Drive: A non-volatile data storage device.",
+                "MBR": "Master Boot Record: The first sector of a data storage device.",
+                "NTFS": "New Technology File System: A proprietary journaling file system developed by Microsoft.",
+                "RAID": "Redundant Array of Inexpensive Disks: A data storage virtualization technology that combines multiple physical disk drive components into one or more logical units.",
+                "SAN (Storage Area Network)": "Storage Area Network: A dedicated high-speed network that provides access to consolidated, block-level data storage.",
+                "SSD": "Solid State Drive: A solid-state storage device that uses integrated circuit assemblies as memory to store data persistently.",
+            },
+            "Business & Management": {
+                "ALE": "Annualized Loss Expectancy: In risk management, the expected monetary loss that is projected to occur over a one-year period.",
+                "ARO": "Annualized Rate of Occurrence: In risk management, the probability that a specific threat will occur within a single year.",
+                "BCP": "Business Continuity Planning: The process of creating systems of prevention and recovery to deal with potential threats to a company.",
+                "BIA": "Business Impact Analysis: A systematic process to determine and evaluate the potential effects of an interruption to critical business operations.",
+                "BPA": "Business Partners Agreement: A legal document setting forth the terms and conditions under which a business associate is permitted to use and disclose protected health information.",
+                "CAR": "Corrective Action Report: A document that records and tracks issues that need to be resolved.",
+                "CIO": "Chief Information Officer: The executive responsible for information technology and computer systems.",
+                "COBO": "Corporate-owned, Business-only: Mobile devices owned by the company and used strictly for business purposes.",
+                "COOP": "Continuity of Operation Planning: A U.S. federal government initiative that ensures that agencies are able to continue their essential functions across a wide range of circumstances.",
+                "COPE": "Corporate Owned, Personally Enabled: Mobile devices owned by the company but allowed for personal use.",
+                "CP": "Contingency Planning: A plan designed to help an organization respond effectively to an event that may or may not happen.",
+                "CSO": "Chief Security Officer: The executive responsible for the security of an organization's assets.",
+                "CTO": "Chief Technology Officer: The executive in charge of a company's technological needs.",
+                "DPO": "Data Privacy Officer: A person responsible for overseeing data protection strategy and implementation to ensure compliance with GDPR requirements.",
+                "DRP": "Disaster Recovery Plan: A documented process or set of procedures to recover and protect a business IT infrastructure in the event of a disaster.",
+                "EULA": "End User License Agreement: A legal contract between a software manufacturer or publisher and the end user of the software.",
+                "GDPR": "General Data Protection Regulation: A regulation in EU law on data protection and privacy in the European Union and the European Economic Area.",
+                "HA": "High Availability: A characteristic of a system, which aims to ensure an agreed level of operational performance, usually uptime, for a higher than normal period.",
+                "MOA": "Memorandum of Agreement: A document that describes an understanding between two or more parties.",
+                "MOU": "Memorandum of Understanding: A formal agreement between two or more parties.",
+                "MSA": "Master Service Agreement: A contract that specifies terms that will govern future agreements between the parties.",
+                "MSP": "Managed Service Provider: A company that remotely manages a customer's IT infrastructure and/or end-user systems.",
+                "MSSP": "Managed Security Service Provider: A managed service provider that focuses on security services.",
+                "MTBF": "Mean Time Between Failures: The predicted elapsed time between inherent failures of a mechanical or electronic system during normal system operation.",
+                "MTTF": "Mean Time to Failure: The Expected Time a system or component will last in operation.",
+                "MTTR": "Mean Time to Recover: The average time it takes to repair a failed system.",
+                "ROI": "Return on Investment: A performance measure used to evaluate the efficiency of an investment.",
+                "RPO": "Recovery Point Objective: The maximum tolerable period in which data might be lost from an IT service due to a major incident.",
+                "RTO": "Recovery Time Objective: The maximum tolerable duration of time that a computer, system, network, or application can be down after a disaster or disruption.",
+                "SLA": "Service-level Agreement: A contract between a service provider and a customer that specifies the level of service expected from the provider.",
+                "SLE": "Single Loss Expectancy: The monetary loss expected each time a risk event occurs.",
+                "SOW": "Statement of Work: A document that defines the specific activities, deliverables, and timelines for a vendor providing services to a client.",
+                "TOU": "Time-of-use: A method of electricity billing where the price of electricity varies depending on the time of day.",
+                "UAT": "User Acceptance Testing: The final phase of software testing in which end-users verify that the software meets their business needs.",
+                "WO": "Work Order: A document issued by a company to a contractor or another department indicating that work needs to be performed.",
+            },
+            "Hardware & Devices": {
+                "BIOS": "Basic Input/Output System: Firmware used to perform hardware initialization during the booting process.",
+                "BYOD": "Bring Your Own Device: A policy allowing employees to use their personal mobile devices for work purposes.",
+                "CCTV": "Closed-circuit Television: A system in which video cameras record and transmit signals to a limited set of monitors.",
+                "COBO": "Corporate-owned, Business-only: Mobile devices owned by the company and used strictly for business purposes.",
+                "COPE": "Corporate Owned, Personally Enabled: Mobile devices owned by the company but allowed for personal use.",
+                "CYOD": "Choose Your Own Device: A policy allowing employees to choose from a list of company-approved devices.",
+                "ESN": "Electronic Serial Number: A unique 32-bit identification number assigned to mobile phones.",
+                "FPGA": "Field Programmable Gate Array: An integrated circuit designed to be configured by a customer or a designer after manufacturing.",
+                "GPU": "Graphics Processing Unit: A specialized electronic circuit designed to rapidly manipulate and alter memory to accelerate the creation of images in a frame buffer.",
+                "HVAC": "Heating, Ventilation Air Conditioning: Technologies for indoor and vehicular environmental comfort.",
+                "MDM": "Mobile Device Management: Software that allows organizations to securely manage and control mobile devices.",
+                "MFD": "Multifunction Device: A device that combines the functionality of multiple office machines into one.",
+                "MFP": "Multifunction Printer: A printer that can also scan, copy, and sometimes fax.",
+                "NFC": "Near Field Communication: A set of communication protocols for communication between two electronic devices.",
+                "PDU": "Power Distribution Unit: A device fitted with multiple outputs designed to distribute electric power to computers or networking equipment.",
+                "PED": "Personal Electronic Device: A portable electronic device that is carried by a person.",
+                "PTZ": "Pan-tilt-zoom: Refers to cameras that have pan, tilt, and zoom capabilities.",
+                "RFID": "Radio Frequency Identifier: A technology that uses radio waves to identify objects or people.",
+                "SIM": "Subscriber Identity Module: A smart card inside a mobile phone that stores the subscriber's identity and phone number.",
+                "SoC": "System on Chip: An integrated circuit that integrates all components of a computer or other electronic system into a single chip.",
+                "TPM": "Trusted Platform Module: A secure cryptoprocessor that is designed to secure hardware by integrating cryptographic keys into devices.",
+                "UAV": "Unmanned Aerial Vehicle: An aircraft without a human pilot aboard.",
+                "UEM": "Unified Endpoint Management: A holistic approach to managing and securing all endpoints from a single console.",
+                "UPS": "Uninterruptible Power Supply: An electrical apparatus that provides emergency power to a load when the input power source or mains power fails.",
+                "USB": "Universal Serial Bus: A standard for connecting computer peripherals.",
+                "USB OTG": "USB On The Go: A specification that allows USB devices to act as a host.",
+                "UTP": "Unshielded Twisted Pair: A type of copper cable used in local area networks (LANs).",
+            },
+            "Software & Development": {
+                "AI": "Artificial Intelligence: The simulation of human intelligence processes by machines.",
+                "API": "Application Programming Interface: A set of defined rules that enable applications to communicate with each other.",
+                "ASLR": "Address Space Layout Randomization: A computer security technique involved in preventing exploitation of memory corruption vulnerabilities.",
+                "BASH": "Bourne Again Shell: A Unix shell and command language.",
+                "CMS": "Content Management System: A computer software system that supports the creation and modification of digital content.",
+                "CSP": "Cloud Service Provider: A third-party company that offers cloud-based computing services to customers.",
+                "DLL": "Dynamic Link Library: A Microsoft implementation of the shared library concept.",
+                "ERP": "Enterprise Resource Planning: A type of software that organizations use to manage day-to-day business activities.",
+                "GPO": "Group Policy Object: A collection of settings that dictates how a system will look and behave for a defined group of users.",
+                "HTML": "Hypertext Markup Language: The standard markup language for documents designed to be displayed in a web browser.",
+                "IaC": "Infrastructure as Code: Managing and provisioning computer data centers through machine-readable definition files.",
+                "MaaS": "Monitoring as a Service: A cloud service model that provides monitoring capabilities for various IT components.",
+                "ML": "Machine Learning: A subset of artificial intelligence that involves training algorithms to learn from data.",
+                "OS": "Operating System: Software that manages computer hardware and software resources.",
+                "OVAL": "Open Vulnerability Assessment Language: An international information security standard that promotes open and publicly available security content.",
+                "P2P": "Peer to Peer: A distributed application architecture that partitions tasks or workloads between peers.",
+                "PaaS": "Platform as a Service: A cloud computing model that provides a platform and environment to allow developers to build, run, and manage applications without the complexity of building and maintaining the infrastructure.",
+                "PAC": "Proxy Auto Configuration: A method that allows web browsers and other user agents to automatically choose the appropriate proxy server for a given URL.",
+                "PBX": "Private Branch Exchange: A telephone system within an enterprise that switches calls between enterprise users on local lines while allowing all users to share a certain number of external phone lines.",
+                "RAD": "Rapid Application Development: A software development methodology that prioritizes rapid prototyping and quick delivery.",
+                "RTOS": "Real-time Operating System: An operating system intended for real-time applications.",
+                "SaaS": "Software as a Service: A software distribution model in which a third-party provider hosts applications and makes them available to customers over the Internet.",
+                "SDK": "Software Development Kit: A collection of software development tools in one installable package.",
+                "SDLC": "Software Development Lifecycle: A process for planning, creating, testing, and deploying an information system.",
+                "SDLM": "Software Development Lifecycle Methodology: A specific approach or framework for the SDLC.",
+                "SEH": "Structured Exception Handler: A mechanism for handling hardware and software exceptions.",
+                "SQL": "Structured Query Language: A domain-specific language used in programming and designed for managing data held in a relational database management system.",
+                "VBA": "Visual Basic: A programming language developed by Microsoft.",
+                "VDE": "Virtual Desktop Environment: A desktop environment that provides users with a virtualized desktop.",
+                "VDI": "Virtual Desktop Infrastructure: A technology that hosts desktop environments on a central server.",
+                "VM": "Virtual Machine: An emulation of a computer system.",
+                "XML": "Extensible Markup Language: A markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable.",
+            },
+            "Cybersecurity Intelligence & Operations": {
+                "AIS": "Automated Indicator Sharing: A capability that enables the exchange of cyber threat indicators and defensive measures.",
+                "APT": "Advanced Persistent Threat: A stealthy threat actor, typically a nation-state or state-sponsored group, which gains unauthorized access to a computer network and remains undetected for an extended period.",
+                "ATT&CK": "Adversarial Tactics, Techniques, and Common Knowledge: A globally accessible knowledge base of adversary tactics and techniques based on real-world observations.",
+                "CVE": "Common Vulnerability Enumeration: A list of publicly disclosed cybersecurity vulnerabilities.",
+                "CVSS": "Common Vulnerability Scoring System: A free and open industry standard for assessing the severity of computer system security vulnerabilities.",
+                "DDoS": "Distributed Denial of Service: A distributed denial-of-service attack, where multiple compromised computer systems attack a target.",
+                "EDR": "Endpoint Detection and Response: A cybersecurity technology that continuously monitors and responds to threats on endpoints.",
+                "HIDS": "Host-based Intrusion Detection System: An IDS that monitors individual hosts.",
+                "HIPS": "Host-based Intrusion Prevention System: An IPS that monitors and prevents intrusions on individual hosts.",
+                "IDS": "Intrusion Detection System: A device or software application that monitors a network or systems for malicious activity or policy violations.",
+                "IPS": "Intrusion Prevention System: A network security device that monitors network and/or system activities for malicious activity.",
+                "IR": "Incident Response: A structured approach to managing the aftermath of a security breach or cyberattack.",
+                "IRP": "Incident Response Plan: A documented plan outlining the steps to take in response to a security incident.",
+                "IoC": "Indicators of Compromise: Forensic data found on a network or operating system that indicates a probable intrusion.",
+                "NIDS": "Network-based Intrusion Detection System: An IDS that monitors network traffic.",
+                "NIPS": "Network-based Intrusion Prevention System: An IPS that monitors and prevents intrusions on a network.",
+                "OSINT": "Open-source Intelligence: Data collected from publicly available sources to be used in an intelligence context.",
+                "RAT": "Remote Access Trojan: A type of malware that allows a remote attacker to control a computer.",
+                "RTBH": "Remotely Triggered Black Hole: A technique used to drop unwanted traffic at the edge of the network.",
+                "SIEM": "Security Information and Event Management: A solution that provides real-time analysis of security alerts generated by network hardware and applications.",
+                "SOAR": "Security Orchestration, Automation, Response: A suite of compatible software programs that helps organizations manage security operations.",
+                "SOC": "Security Operations Center: A centralized unit that deals with security issues on an organizational and technical level.",
+                "STIX": "Structured Threat Information eXchange: A structured language for sharing cyber threat intelligence.",
+                "TAXII": "Trusted Automated eXchange of Indicator Information: A protocol for exchanging cyber threat intelligence.",
+                "TOC": "Time-of-check: In concurrency, a race condition that occurs when the time at which a program checks a condition differs from the time at which it acts on that condition.",
+                "TTP": "Tactics, Techniques, and Procedures: A framework used in cybersecurity to describe the methods and behaviors of threat actors.",
+                "UBA": "User Behavior Analytics: A cybersecurity process that uses behavioral analysis to monitor user activity for suspicious patterns.",
+                "WIDS": "Wireless Intrusion Detection System: A system that detects unauthorized activity on a wireless network.",
+                "WIPS": "Wireless Intrusion Prevention System: A system that detects and prevents unauthorized activity on a wireless network.",
+                "XDR": "Extended Detection and Response: A unified security incident detection and response platform that automatically collects and correlates data across multiple security layers.",
+            },
+            "Organizations & Standards": {
+                "IaaS": "Infrastructure as a Service: A cloud computing model that provides virtualized computing resources over the Internet.",
+                "ICS": "Industrial Control Systems: Computerized systems that control and monitor industrial processes.",
+                "ISO": "International Standards Organization: An international non-governmental organization that develops and publishes voluntary international standards.",
+                "ISP": "Internet Service Provider: A company that provides Internet access to organizations and individuals.",
+                "RACE": "Research and Development in Advanced Communications Technologies in Europe: A research program related to advanced communication technologies.",
+                "SCADA": "Supervisory Control and Data Acquisition: A control system architecture comprising computers, networked data communications and graphical user interfaces for high-level process supervisory management.",
+            },
+            "Miscellaneous": {
+                "DBA": "Database Administrator: An IT professional responsible for the maintenance and control of an organization's databases.",
+                "GPS": "Global Positioning System: A satellite-based radionavigation system owned by the United States government and operated by the United States Space Force.",
+                "IDF": "Intermediate Distribution Frame: A cable rack that interconnects and manages the telecommunications wiring between a main distribution frame (MDF) and workstation devices.",
+                "IM": "Instant Messaging: A type of online chat that offers real-time text transmission over the Internet.",
+                "IRC": "Internet Relay Chat: An application layer protocol that facilitates real-time text messaging.",
+                "MDF": "Main Distribution Frame: A signal distribution frame for connecting telecommunication cables.",
+                "MMS": "Multimedia Message Service: A standard way to send messages that include multimedia content to and from mobile phones.",
+                "OID": "Object Identifier: A unique identifier used to name an object or an object class.",
+                "OTA": "Over the Air: A method of wireless data transfer.",
+                "OT": "Operational Technology: Hardware and software that detects or causes a change through the direct monitoring and/or control of physical devices, processes and events in the enterprise.",
+                "VTC": "Video Teleconferencing: The live exchange of audio and video between two or more participants.",
             }
+        };
+
+        const glossaryContainer = document.getElementById('glossary-container');
+
+        // Function to create and append category sections
+        function createGlossary() {
+            for (const categoryName in acronymData) {
+                const categoryDiv = document.createElement('div');
+                categoryDiv.className = 'category-item bg-gray-50 rounded-lg shadow-sm overflow-hidden';
+
+                const categoryButton = document.createElement('button');
+                categoryButton.className = 'category-button w-full flex justify-between items-center p-4 bg-blue-600 text-white font-semibold text-lg rounded-t-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50';
+                categoryButton.innerHTML = `
+                    <span>${categoryName}</span>
+                    <svg class="w-5 h-5 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                `;
+                categoryDiv.appendChild(categoryButton);
+
+                const categoryContent = document.createElement('div');
+                categoryContent.className = 'category-content px-4 py-0 space-y-2'; // py-0 initially, will be py-2 when active
+                categoryDiv.appendChild(categoryContent);
+
+                // Populate acronyms within the category
+                for (const acronym in acronymData[categoryName]) {
+                    const acronymItemDiv = document.createElement('div');
+                    acronymItemDiv.className = 'acronym-item';
+
+                    const acronymButton = document.createElement('button');
+                    acronymButton.className = 'acronym-button w-full flex justify-between items-center py-2 px-3 bg-gray-100 text-gray-800 font-medium rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50';
+                    acronymButton.innerHTML = `
+                        <span>${acronym}</span>
+                        <svg class="w-4 h-4 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    `;
+                    acronymItemDiv.appendChild(acronymButton);
+
+                    const acronymDefinition = document.createElement('div');
+                    acronymDefinition.className = 'acronym-definition ml-4 text-sm text-gray-600 py-0'; // py-0 initially, will be py-1 when active
+                    acronymDefinition.textContent = acronymData[categoryName][acronym];
+                    acronymItemDiv.appendChild(acronymDefinition);
+
+                    categoryContent.appendChild(acronymItemDiv);
+                }
+
+                glossaryContainer.appendChild(categoryDiv);
+            }
+            addEventListeners();
         }
 
-        function toggleDefinition(element) {
-            element.classList.toggle('active');
-            let definition = element.nextElementSibling;
-            if (definition.style.display === "block") {
-                definition.style.display = "none";
-            } else {
-                definition.style.display = "block";
-            }
+        // Function to add event listeners to dynamically created buttons
+        function addEventListeners() {
+            // Category dropdowns
+            document.querySelectorAll('.category-button').forEach(button => {
+                button.addEventListener('click', () => {
+                    const categoryContent = button.nextElementSibling;
+                    const icon = button.querySelector('svg');
+
+                    categoryContent.classList.toggle('active');
+                    if (categoryContent.classList.contains('active')) {
+                        icon.style.transform = 'rotate(180deg)';
+                        button.classList.remove('rounded-b-lg'); // Remove if it was rounded-b-lg
+                    } else {
+                        icon.style.transform = 'rotate(0deg)';
+                        button.classList.add('rounded-b-lg'); // Add back if it's closing
+                    }
+                });
+            });
+
+            // Acronym dropdowns
+            document.querySelectorAll('.acronym-button').forEach(button => {
+                button.addEventListener('click', () => {
+                    const acronymDefinition = button.nextElementSibling;
+                    const icon = button.querySelector('svg');
+
+                    acronymDefinition.classList.toggle('active');
+                    if (acronymDefinition.classList.contains('active')) {
+                        icon.style.transform = 'rotate(180deg)';
+                    } else {
+                        icon.style.transform = 'rotate(0deg)';
+                    }
+                });
+            });
         }
+
+        // Initialize the glossary on page load
+        document.addEventListener('DOMContentLoaded', createGlossary);
     </script>
-
 </body>
 </html>
