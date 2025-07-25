@@ -1,0 +1,334 @@
+AAA:2FA: Two-factor Authentication: An authentication method requiring two distinct forms of identification to verify a user's identity.
+AAA:AAA: Authentication, Authorization, and Accounting: A framework for controlling access to computer resources, enforcing policies, auditing usage, and providing information necessary to bill for services.
+AAA:ACL: Access Control List: A list of permissions associated with an object, specifying which users or system processes are granted access to objects, as well as what operations are allowed on given objects.
+AAA:CAPTCHA: Completely Automated Public Turing Test to Tell Computers and Humans Apart: A type of challenge-response test used in computing to determine whether or not the user is human.
+AAA:DAC: Discretionary Access Control: An access control model where the owner of a resource can decide who can access it and what permissions they have.
+AAA:DKIM: DomainKeys Identified Mail: An email authentication method designed to detect forged sender addresses in emails.
+AAA:DMARC: Domain Message Authentication Reporting and Conformance: An email authentication protocol that builds on SPF and DKIM to give email senders the ability to protect their domain from unauthorized use.
+AAA:EAP: Extensible Authentication Protocol: An authentication framework that supports multiple authentication methods.
+AAA:EFS: Encrypted File System: A feature of Windows that allows for files and folders to be encrypted individually.
+AAA:FACL: File System Access Control List: A list of permissions associated with an object, specifying which users or system processes are granted access to objects, as well as what operations are allowed on given objects at the file system level.
+AAA:FIM: File Integrity Management: A process that involves validating the integrity of operating system and application software files using a verification method.
+AAA:FRR: False Rejection Rate: The rate at which legitimate users are denied access by an authentication system.
+AAA:IAM: Identity and Access Management: A framework of policies and technologies to ensure that the right people have the appropriate access to technology resources.
+AAA:MAC: Mandatory Access Control: An access control model where the operating system or security kernel enforces access control policy.
+AAA:MAC: Message Authentication Code: A short piece of information used to authenticate a message and provide integrity and authenticity.
+AAA:MFA: Multifactor Authentication: An authentication method requiring two or more distinct forms of identification to verify a user's identity.
+AAA:OAUTH: Open Authorization: An open standard for access delegation, commonly used as a way for Internet users to grant websites or applications access to their information on other websites without giving them their passwords.
+AAA:OID: Object Identifier: A hierarchical name used to uniquely identify an object or object class.
+AAA:PAM: Privileged Access Management: Solutions that help organizations manage and secure privileged accounts.
+AAA:PAM: Pluggable Authentication Modules: A mechanism for integrating low-level authentication schemes into a higher-level API.
+AAA:RADIUS: Remote Authentication Dial-in User Service: A networking protocol that provides centralized Authentication, Authorization, and Accounting (AAA) management for users connecting and using a network service.
+AAA:RBAC: Role-based Access Control: An access control model where access is granted based on the user's role within an organization.
+AAA:RBAC: Rule-based Access Control: An access control model where access is granted based on a set of predefined rules.
+AAA:RFID: Radio Frequency Identifier: The use of radio waves to identify objects or people automatically.
+AAA:SAE: Simultaneous Authentication of Equals: An authentication method used in Wi-Fi Protected Access 3 (WPA3).
+AAA:SPF: Sender Policy Framework: An email authentication method designed to detect forged sender addresses in emails.
+AAA:SSO: Single Sign-on: An authentication scheme that allows a user to log in with a single ID and password to gain access to multiple related but independent software systems.
+AAA:TGT: Ticket Granting Ticket: A special type of Kerberos ticket that allows a client to obtain additional service tickets without re-authenticating.
+Applications:API: Application Programming Interface: A set of defined rules that enable different applications to communicate with each other.
+Applications:DLL: Dynamic Link Library: A library that contains code and data that can be used by more than one program at the same time.
+Applications:PUP: Potentially Unwanted Program: A program that may be unwanted by the user, but not necessarily malicious.
+Applications:RAD: Rapid Application Development: A software development methodology that prioritizes rapid prototyping and quick delivery.
+Applications:SDK: Software Development Kit: A collection of software development tools in one installable package.
+Applications:SDLC: Software Development Lifecycle: A conceptual model used in project management that describes the stages involved in an information system development project.
+Applications:SDLM: Software Development Lifecycle Methodology: A framework that details the steps involved in developing software.
+Applications:SEH: Structured Exception Handler: Microsoft-specific mechanism designed to handle and provide low-level control over errors/faults/exception.
+Applications:SQL: Structured Query Language: A domain-specific language used in programming and designed for managing data held in a relational database management system, or for stream processing in a relational data stream management system.
+Applications:UAT: User Acceptance Testing: The final stage of any software development process where the actual software users test the software to ensure it can handle the required tasks in real-world scenarios.
+Applications:VBA: Visual Basic: An event-driven programming language and associated integrated development environment (IDE) from Microsoft.
+Applications:VDE: Virtual Desktop Environment: A desktop environment that is accessed remotely from a client device.
+Applications:HTML: Hypertext Markup Language: The standard markup language for documents designed to be displayed in a web browser.
+Applications:XML: Extensible Markup Language: A markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable.
+Applications:SD-WAN: Software-defined Wide Area Network: A modern approach to managing and optimizing wide area networks using software-based technologies (for creating smart WANs).
+Applications:SDN: Software-defined Networking: A modern approach to managing computer networks that emphasizes flexibility, programmability, and centralized control.
+Applications:VDI: Virtual Desktop Infrastructure: A desktop virtualization technology that hosts desktop operating systems and applications on a centralized server.
+Attacks:CSRF: Cross-site Request Forgery: An attack that forces an end user to execute unwanted actions on a web application in which they're currently authenticated.
+Attacks:SPIM: Spam over Internet Messaging: Unsolicited commercial or malicious messages sent over instant messaging.
+Attacks:SQLi: SQL Injection: A code injection technique used to attack data-driven applications, in which malicious SQL statements are inserted into an entry field for execution.
+Attacks:XSRF: Cross-site Request Forgery: An attack that forces an end user to execute unwanted actions on a web application in which they're currently authenticated. (Same as CSRF)
+Attacks:XSS: Cross-site Scripting: A type of security vulnerability typically found in web applications that enables attackers to inject client-side scripts into web pages viewed by other users.
+Business:ALE: Annualized Loss Expectancy: The expected monetary loss for an asset or a group of assets over a one-year period.
+Business:ARO: Annualized Rate of Occurrence: The likelihood, expressed as a percentage, that a specific threat or risk will occur within a single year.
+Business:AUP: Acceptable Use Policy: A document outlining the rules and practices that individuals must follow to use a computer network or other resources.
+Business:BCP: Business Continuity Planning: The process of creating systems of prevention and recovery to deal with potential threats to a company.
+Business:BIA: Business Impact Analysis: A systematic process to determine and evaluate the potential effects of an interruption to critical business operations as a result of a disaster, accident, or emergency.
+Business:BPA: Business Partners Agreement: A legal document defining responsibilities, expectations, and liabilities between two or more business partners.
+Business:BYOD: Bring Your Own Device: A policy where employees are allowed to use their personally owned mobile devices (laptops, tablets, smartphones) for work-related purposes.
+Business:CAR: Corrective Action Report: A document that outlines the details of an identified problem, the investigation into its root cause, the corrective actions taken, and verification of their effectiveness.
+Business:CERT: Computer Emergency Response Team: An expert group that handles computer security incidents.
+Business:CIO: Chief Information Officer: An executive who oversees the use of information technology and computer systems.
+Business:CIRT: Computer Incident Response Team: A team responsible for reacting to computer security incidents and breaches.
+Business:COBO: Corporate-owned, Business-only: A mobile device deployment model where devices are owned by the company and used strictly for business purposes.
+Business:COOP: Continuity of Operation Planning: A government initiative to ensure that essential functions can be continued in the event of a catastrophic emergency.
+Business:COPE: Corporate Owned, Personally Enabled: A mobile device deployment model where devices are owned by the company but employees are allowed to use them for personal activities.
+Business:CP: Contingency Planning: The process of preparing for unforeseen events or disasters that could disrupt business operations.
+Business:CSO: Chief Security Officer: An executive responsible for the security of an organization's assets.
+Business:CTO: Chief Technology Officer: An executive responsible for an organization's technological development and new technology.
+Business:CYOD: Choose Your Own Device: A mobile device deployment model where employees can choose from a selection of company-approved devices.
+Business:DBA: Database Administrator: A person responsible for the design, implementation, maintenance, and repair of an organization's database.
+Business:DPO: Data Privacy Officer: An individual responsible for overseeing an organization's data protection strategy and its implementation to ensure compliance with data protection requirements.
+Business:DRP: Disaster Recovery Plan: A documented process or set of procedures to recover and protect a business IT infrastructure in the event of a disaster.
+Business:ERP: Enterprise Resource Planning: A system that integrates all facets of an operation, including product planning, development, manufacturing, sales and marketing.
+Business:EULA: End User License Agreement: A legal contract between a software developer or vendor and the user of the software.
+Business:GDPR: General Data Protection Regulation: A regulation in EU law on data protection and privacy for all individuals within the European Union and the European Economic Area.
+Business:HA: High Availability: A characteristic of a system, which aims to ensure an agreed level of operational performance, usually uptime, for a higher than normal period.
+Business:IaaS: Infrastructure as a Service: A cloud computing model that provides virtualized computing resources over the internet.
+Business:IaC: Infrastructure as Code: The management of infrastructure (networks, virtual machines, load balancers, etc.) in a descriptive model, using the same versioning as DevOps team uses for source code.
+Business:IRP: Incident Response Plan: A documented plan that outlines the steps an organization will take to respond to a security incident.
+Business:ISP: Internet Service Provider: An organization that provides services for accessing, using, or participating in the Internet.
+Business:ISSO: Information Systems Security Officer: A professional responsible for maintaining the security of an organization's information systems.
+Business:MaaS: Monitoring as a Service: A cloud service model where monitoring capabilities are provided as a service over the internet.
+Business:MDM: Mobile Device Management: Software that allows organizations to securely manage and monitor mobile devices, like smartphones and tablets.
+Business:MOA: Memorandum of Agreement: A written document describing a cooperative relationship between two or more parties.
+Business:MOU: Memorandum of Understanding: A formal agreement between two or more parties.
+Business:MSA: Master Service Agreement: A contract that defines the terms and conditions that will govern future agreements or transactions between two parties.
+Business:MSP: Managed Service Provider: A company that remotely manages a customer's IT infrastructure and/or end-user systems.
+Business:MSSP: Managed Security Service Provider: A company that provides outsourced monitoring and management of security devices and systems.
+Business:MTBF: Mean Time Between Failures: The predicted elapsed time between inherent failures of a mechanical or electronic system during normal system operation.
+Business:MTTF: Mean Time to Failure: The average time a non-repairable system or component is expected to function before it fails.
+Business:MTTR: Mean Time to Recover: The average time it takes to repair a failed system or component.
+Business:NDA: Non-disclosure Agreement: A legal contract between at least two parties that outlines confidential material, knowledge, or information that the parties wish to share with one another for certain purposes, but wish to restrict access to or by third parties.
+Business:PaaS: Platform as a Service: A cloud computing model that provides a platform and environment to allow developers to build, run, and manage applications without the complexity of building and maintaining the infrastructure typically associated with developing and launching an app.
+Business:ROI: Return on Investment: A performance measure used to evaluate the efficiency or profitability of an investment or compare the efficiency of a number of different investments.
+Business:RPO: Recovery Point Objective: The maximum tolerable period in which data might be lost from an IT service due to a major incident.
+Business:RTO: Recovery Time Objective: The maximum tolerable duration of time that a computer system, application, or network can be down after a disaster or disruption occurs.
+Business:SaaS: Software as a Service: A software distribution model in which a third-party provider hosts applications and makes them available to customers over the Internet.
+Business:SLA: Service-level Agreement: A contract between a service provider and a customer that specifies the level of service expected from the provider.
+Business:SLE: Single Loss Expectancy: The monetary loss expected each time a risk materializes.
+Business:SOW: Statement of Work: A document that describes the work to be performed, deliverables, and timelines.
+Business:TOU: Time-of-use: A pricing plan that varies the price of electricity based on the time of day and season.
+Business:WO: Work Order: A document that authorizes and specifies the work to be performed.
+Cloud:CASB: Cloud Access Security Broker: Software or hardware that acts as an intermediary between users and cloud service providers.
+Cloud:CSP: Cloud Service Provider: A third-party company that offers cloud-based computing services.
+Cloud:SASE: Secure Access Service Edge: A cloud-based architecture that converges wide area networking (WAN) and network security functions into a single, cloud-native service.
+Cloud:VPC: Virtual Private Cloud: A private, isolated section of the Amazon Web Services (AWS) cloud where you can launch AWS resources in a virtual network that you define.
+Cryptography:3DES: Triple Data Encryption Standard: A symmetric-key block cipher that applies the DES algorithm three times to each data block.
+Cryptography:AES: Advanced Encryption Standard: A symmetric-key block cipher standard adopted by the U.S. government for encrypting electronic data.
+Cryptography:AES-256: Advanced Encryption Standards 256-bit: A version of the Advanced Encryption Standard (AES) that uses a 256-bit key length for encryption.
+Cryptography:CBC: Cipher Block Chaining: A mode of operation for block ciphers, which makes each ciphertext block dependent on all preceding plaintext blocks.
+Cryptography:CFB: Cipher Feedback: A mode of operation for block ciphers that makes the block cipher into a self-synchronizing stream cipher.
+Cryptography:CTM: Counter Mode: A mode of operation for block ciphers that turns a block cipher into a stream cipher.
+Cryptography:DES: Digital Encryption Standard: An outdated symmetric-key algorithm for the encryption of electronic data.
+Cryptography:DHE: Diffie-Hellman Ephemeral: A type of Diffie-Hellman key exchange that generates a new key for each session, providing perfect forward secrecy.
+Cryptography:ECB: Electronic Code Book: A simple and insecure mode of operation for block ciphers, where each block of plaintext is encrypted independently.
+Cryptography:ECC: Elliptic Curve Cryptography: An approach to public-key cryptography based on the algebraic structure of elliptic curves over finite fields.
+Cryptography:ECDHE: Elliptic Curve Diffie-Hellman Ephemeral: A key agreement protocol that allows two parties, each having an elliptic curve public-private key pair, to establish a shared secret over an insecure channel.
+Cryptography:ECDSA: Elliptic Curve Digital Signature Algorithm: A variant of the Digital Signature Algorithm (DSA) which uses elliptic curve cryptography.
+Cryptography:GCM: Galois Counter Mode: A mode of operation for block ciphers that provides authenticated encryption.
+Cryptography:GPG: Gnu Privacy Guard: A free software implementation of the OpenPGP standard, used for encryption and digital signatures.
+Cryptography:HMAC: Hashed Message Authentication Code: A specific type of message authentication code (MAC) involving a cryptographic hash function and a secret cryptographic key.
+Cryptography:IDEA: International Data Encryption Algorithm: A symmetric-key block cipher designed as a replacement for DES.
+Cryptography:KEK: Key Encryption Key: A cryptographic key that is used to encrypt other keys.
+Cryptography:MD5: Message Digest 5: A widely used cryptographic hash function producing a 128-bit hash value.
+Cryptography:P12: PKCS #12: A common file format for storing many cryptographic objects as a single file.
+Cryptography:PBKDF2: Password-based Key Derivation Function 2: A cryptographic algorithm used to transform a password into a secure cryptographic key to reduce the susceptibility of a system to brute-force attacks; makes it computationally expensive to guess passwords.
+Cryptography:PGP: Pretty Good Privacy: An encryption program that provides cryptographic privacy and authentication for data communication.
+Cryptography:PKCS: Public Key Cryptography Standards: A group of standards designed to ensure the compatibility and interoperability of public-key cryptography.
+Cryptography:PKI: Public Key Infrastructure: A set of roles, policies, and procedures needed to create, manage, distribute, use, store, and revoke digital certificates.
+Cryptography:PSK: Pre-shared Key: A secret key that has been shared between two parties before it is used to encrypt messages.
+Cryptography:RA: Recovery Agent: An agent that can recover encrypted data on behalf of a user.
+Cryptography:RC4: Rivest Cipher version 4: A stream cipher widely used in various protocols such as SSL, TLS, and WEP.
+Cryptography:RIPEMD: RACE Integrity Primitives Evaluation Message Digest: A family of cryptographic hash functions.
+Cryptography:RSA: Rivest, Shamir, & Adleman: A widely used public-key cryptosystem for secure data transmission.
+Cryptography:S/MIME: Secure/Multipurpose Internet Mail Extensions: A standard for public key encryption and signing of MIME data.
+Cryptography:SHA: Secure Hashing Algorithm: A family of cryptographic hash functions.
+Cryptography:SSL: Secure Sockets Layer: An outdated cryptographic protocol that provides secure communication over a computer network.
+Cryptography:TKIP: Temporal Key Integrity Protocol: An encryption protocol used in the WPA standard for wireless networks.
+Cryptography:TLS: Transport Layer Security: A cryptographic protocol designed to provide communications security over a computer network.
+Cryptography:TOTP: Time-based One-time Password: An algorithm that computes a one-time password based on the current time and a shared secret key.
+Cryptography:TPM: Trusted Platform Module: An international standard for a secure cryptoprocessor, a dedicated microcontroller designed to secure hardware by integrating cryptographic keys into devices.
+Cryptography:WEP: Wired Equivalent Privacy: An outdated security algorithm for IEEE 802.11 wireless networks.
+Cryptography:DSA: Digital Signature Algorithm: A cryptographic method used to ensure the authenticity, integrity, and non-repudiation of digital messages; a public-key cryptosystem standardized by the U.S. Government.
+Cryptography:FDE: Full Disk Encryption: The encryption of all data on a hard drive.
+CTI:AIS: Automated Indicator Sharing: A program that enables the exchange of cyber threat indicators and defensive measures in real-time.
+CTI:APT: Advanced Persistent Threat: A stealthy threat actor, typically a nation-state or state-sponsored group, which gains unauthorized access to a computer network and remains undetected for an extended period.
+CTI:ASLR: Address Space Layout Randomization: A security feature that randomly arranges the address space positions of key data areas, including the base of the executable and the positions of the stack, heap, and libraries.
+CTI:ATT&CK: Adversarial Tactics, Techniques, and Common Knowledge: A knowledge base of cyberattack methodologies and is used as a foundation for the development of specific threat models and methodologies.
+CTI:AV: Antivirus: Software designed to detect, prevent, and remove malicious software.
+CTI:CA: Certificate Authority: An entity that issues digital certificates.
+CTI:CRL: Certificate Revocation List: A list of digital certificates that have been revoked by the issuing certificate authority before their scheduled expiration date.
+CTI:CSR: Certificate Signing Request: A message sent from an applicant to a certificate authority to apply for a digital certificate.
+CTI:CVE: Common Vulnerability Enumeration: A dictionary of publicly known information security vulnerabilities and exposures.
+CTI:CVSS: Common Vulnerability Scoring System: A free and open industry standard for assessing the severity of computer system security vulnerabilities.
+CTI:DDoS: Distributed Denial of Service: A cyberattack where multiple compromised computer systems attack a target, such as a server, website or other network resource, and cause a denial of service for users of the targeted resource.
+CTI:DEP: Data Execution Prevention: A security feature that prevents code from being executed in certain memory regions, which helps prevent buffer overflow attacks.
+CTI:DLP: Data Loss Prevention: A set of tools and processes used to ensure that sensitive data is not lost, misused, or accessed by unauthorized users.
+CTI:DoS: Denial of Service: A cyberattack in which the perpetrator seeks to make a machine or network resource unavailable to its intended users by temporarily or indefinitely disrupting services of a host connected to the Internet.
+CTI:EDR: Endpoint Detection and Response: An integrated, layered approach to endpoint protection that combines real-time continuous monitoring and collection of endpoint data with automated response capabilities.
+CTI:HIDS: Host-based Intrusion Detection System: An intrusion detection system that monitors and analyzes the internals of a computing system as well as the network packets on its network interfaces.
+CTI:HIPS: Host-based Intrusion Prevention System: An intrusion prevention system that monitors and analyzes the internals of a computing system as well as the network packets on its network interfaces, and also actively prevents malicious activity.
+CTI:IDS: Intrusion Detection System: A system that monitors network traffic for suspicious activity and alerts when such activity is discovered.
+CTI:IoC: Indicators of Compromise: Forensic data, such as data found in system or network logs, that identify potentially malicious activity on a system or network.
+CTI:IPS: Intrusion Prevention System: A system that monitors network traffic for suspicious activity and takes action to prevent it.
+CTI:IR: Incident Response: An organized approach to addressing and managing the aftermath of a security breach or cyberattack.
+CTI:IV: Initialization Vector: A fixed-size input to a cryptographic primitive that is typically required to be random or pseudorandom.
+CTI:KDC: Key Distribution Center: A network service that provides secret keys to users and applications.
+CTI:NIDS: Network-based Intrusion Detection System: An intrusion detection system that monitors network traffic for suspicious activity.
+CTI:NIPS: Network-based Intrusion Prevention System: An intrusion prevention system that monitors network traffic for suspicious activity and actively prevents it.
+CTI:NIST: National Institute of Standards & Technology: A physical sciences laboratory and non-regulatory agency of the United States Department of Commerce.
+CTI:OSINT: Open-source Intelligence: Intelligence collected from publicly available sources.
+CTI:OVAL: Open Vulnerability Assessment Language: An international information security standard to promote open and publicly available security content, and standardize the transfer of this information across the entire spectrum of security tools and services.
+CTI:PCI DSS: Payment Card Industry Data Security Standard: A set of security standards designed to ensure that all companies that accept, process, store, or transmit credit card information maintain a secure environment.
+CTI:PHI: Personal Health Information: Any information about health status, provision of health care, or payment for health care that can be linked to an individual.
+CTI:PII: Personally Identifiable Information: Information that can be used to identify, contact, or locate a single person, or to identify an individual in context.
+CTI:PIV: Personal Identity Verification: A U.S. government standard for smart cards that contain the necessary data for the cardholder to be identified and verified.
+CTI:RA: Registration Authority: An entity in a PKI that verifies the identity of certificate applicants and forwards their requests to a CA.
+CTI:RAT: Remote Access Trojan: A type of malware that allows an attacker to control a system remotely.
+CTI:RTBH: Remotely Triggered Black Hole: A technique used by ISPs to mitigate denial of service attacks by dropping traffic to a specific destination.
+CTI:SE Linux: Security-enhanced Linux: A security module for the Linux kernel that provides a mechanism for supporting access control security policies.
+CTI:SIEM: Security Information and Event Management: A solution that provides real-time analysis of security alerts generated by applications and network hardware.
+CTI:SOAR: Security Orchestration, Automation, Response: A set of software capabilities and services that allow organizations to collect security threats data and alerts from different sources.
+CTI:SOC: Security Operations Center: A centralized function within an organization that uses technology, processes, and people to continuously monitor and improve an organization's security posture.
+CTI:STIX: Structured Threat Information eXchange: A structured language for sharing cyber threat intelligence.
+CTI:SWG: Secure Web Gateway: A network security solution that protects users from web-based threats and enforces internet use policies.
+CTI:TAXII: Trusted Automated eXchange of Indicator Information: A standard for automated exchange of cyber threat information.
+CTI:TTP: Tactics, Techniques, and Procedures: A framework used in cybersecurity to describe the behavior of threat actors.
+CTI:UBA: User Behavior Analytics: A cybersecurity process that uses analytics to detect insider threats, targeted attacks, and financial fraud.
+CTI:UTM: Unified Threat Management: An all-in-one security appliance that provides multiple security functions.
+CTI:WIDS: Wireless Intrusion Detection System: A system that monitors wireless network traffic for suspicious activity.
+CTI:WIPS: Wireless Intrusion Prevention System: A system that monitors wireless network traffic for suspicious activity and actively prevents it.
+CTI:XDR: Extended Detection and Response: A unified security platform that collects and correlates data across multiple security layers to improve threat detection and response.
+Devices:NGFW: Next-generation Firewall: A part of the third generation of firewall technology, combining a traditional firewall with other network device filtering functionalities, such as an application firewall and an intrusion prevention system.
+Devices:AP: Access Point: A device that creates a wireless local area network (WLAN), usually in an office or large building. An AP connects to a wired router, switch, or hub via an Ethernet cable, and projects a Wi-Fi signal to a designated area.
+Devices:HDD: Hard Disk Drive: A data storage device used for storing and retrieving digital information using rapidly rotating disks coated with magnetic material.
+Devices:HSM: Hardware Security Module: A physical computing device that safeguards and manages digital keys for strong authentication and provides cryptoprocessing.
+Devices:ICS: Industrial Control Systems: General term for control systems, and associated instrumentation, used for industrial process control.
+Devices:IDF: Intermediate Distribution Frame: A cable rack or enclosure that interconnects and manages the telecommunications wiring between a main distribution frame (MDF) and end-user devices.
+Devices:IoT: Internet of Things:" The network of physical objects—""things""—that are embedded with sensors, software, and other technologies for the purpose of connecting and exchanging data with other devices and systems over the internet."
+Devices:LAN: Local Area Network: A computer network that interconnects computers within a limited area such as a residence, school, laboratory, university campus, or office building.
+Devices:MAN: Metropolitan Area Network: A computer network that interconnects users with computer resources in a geographic area larger than a local area network (LAN) but smaller than a wide area network (WAN).
+Devices:MDF: Main Distribution Frame: A signal distribution frame or cable rack used for interconnecting and managing telecommunication and data cabling between itself and any number of IDFs.
+Devices:MFD: Multifunction Device: A device that performs multiple functions, such as printing, scanning, copying, and faxing.
+Devices:MFP: Multifunction Printer: A device that combines the functionality of a printer, copier, scanner, and/or fax machine.
+Devices:PBX: Private Branch Exchange: A private telephone network used within a company or organization.
+Devices:PDU: Power Distribution Unit: A device fitted with multiple outputs designed to distribute electric power to computers or networking equipment within a rack.
+Devices:PED: Personal Electronic Device: Any electronic device that is personally owned and used, such as smartphones, tablets, and laptops.
+Devices:PTZ: Pan-tilt-zoom: A type of camera that can pan, tilt, and zoom to cover a wide area.
+Devices:RAS: Remote Access Server: A server that enables users to connect to a private network remotely.
+Devices:SAN: Storage Area Network: A dedicated high-speed network that provides access to consolidated, block-level data storage.
+Devices:SCADA: Supervisory Control and Data Acquisition: A control system architecture comprising computers, networked data communications and graphical user interfaces for high-level process supervisory management.
+Devices:SED: Self-encrypting Drives: Hard disk drives or solid-state drives that encrypt data at rest.
+Devices:SIM: Subscriber Identity Module: An integrated circuit that securely stores the international mobile subscriber identity (IMSI) and related keys used to identify and authenticate subscribers on mobile telephony devices.
+Devices:SoC: System on Chip: An integrated circuit that integrates all components of a computer or other electronic system into a single chip.
+Devices:SSD: Solid State Drive: A solid-state storage device that uses integrated circuit assemblies as memory to store data persistently.
+Devices:UPS: Uninterruptible Power Supply: A device that allows electronic equipment to keep running for at least a short time when the primary power source is lost.
+Devices:WAF: Web Application Firewall: A firewall that monitors, filters, and blocks HTTP traffic to and from a web application.
+Devices:WAP: Wireless Access Point: A device that allows wireless devices to connect to a wired network using Wi-Fi, Bluetooth, or related standards.
+Devices:CSU: Channel Service Unit: A digital interface device that connects a digital line (like a T1 or E1) from the customer's premises to the provider's network.
+Devices:FPGA: Field Programmable Gate Array: An integrated circuit designed to be configured by a customer or a designer after manufacturing.
+Devices:GPU: Graphics Processing Unit: A specialized electronic circuit designed to rapidly manipulate and alter memory to accelerate the creation of images in a frame buffer intended for output to a display device.
+Devices:HVAC: Heating, Ventilation Air Conditioning: Systems that control the environmental conditions within a building.
+Devices:RAID: Redundant Array of Inexpensive Disks: A data storage virtualization technology that combines multiple physical disk drive components into one or more logical units for the purposes of data redundancy, performance improvement, or both.
+General:AI: Artificial Intelligence: The simulation of human intelligence processes by machines, especially computer systems.
+General:BASH: Bourne Again Shell: A Unix shell and command language, commonly used as the default login shell for many Linux distributions.
+General:BIOS: Basic Input/Output System: Firmware used to perform hardware initialization during the booting process and to provide runtime services for operating systems and programs.
+General:CCTV: Closed-circuit Television: A television system in which signals are not publicly distributed but are monitored, primarily for surveillance and security purposes.
+General:CIA: Confidentiality, Integrity, Availability: The three core principles of information security.
+General:CMS: Content Management System: A software application or set of related programs that are used to create and manage digital content.
+General:CRC: Cyclical Redundancy Check: An error-detecting code commonly used in digital networks (mostly Data Link Layer Ethernet, PPP, and HDLC) and storage devices (RAID) to detect accidental changes to raw data.
+General:ESN: Electronic Serial Number: A unique identification number assigned to mobile phones.
+General:GPO: Group Policy Object: A collection of settings that define what a system will look like and how it will behave for a defined group of users.
+General:GPS: Global Positioning System: A satellite-based navigation system that provides location and time information.
+General:HOTP: HMAC-based One-time Password: An algorithm for generating one-time passwords based on HMAC.
+General:IdP: Identity Provider: A system entity that creates, maintains, and manages identity information for principals and provides authentication services to other service providers.
+General:IEEE: Institute of Electrical and Electronics Engineers: A professional association for electronic engineering and electrical engineering.
+General:ISO: International Standards Organization: An international standard-setting body composed of representatives from various national standards organizations.
+General:MBR: Master Boot Record: A special type of boot sector at the very beginning of partitioned computer mass storage devices.
+General:ML: Machine Learning: A subset of artificial intelligence that provides systems the ability to automatically learn and improve from experience without being explicitly programmed.
+General:NTFS: New Technology File System: The standard file system of Windows NT and its successors.
+General:OS: Operating System: Software that manages computer hardware and software resources and provides common services for computer programs.
+General:OT: Operational Technology: Hardware and software that detects or causes a change through the direct monitoring and/or control of physical devices, processes, and events in the enterprise.
+General:RACE: Research and Development in Advanced Communications Technologies in Europe: A European Union research program focusing on advanced communications technologies.
+General:RTOS: Real-time Operating System: An operating system intended for applications with strict timing constraints.
+General:SAN: Subject Alternative Name: An extension to X.509 that allows various values to be associated with a security certificate using a subjectAltName field.
+General:TOC: Time-of-check: The time at which a condition is checked.
+General:UAV: Unmanned Aerial Vehicle: An aircraft without a human pilot aboard.
+General:UEFI: Unified Extensible Firmware Interface: A specification for a software interface between an operating system and platform firmware.
+General:UEM: Unified Endpoint Management: A comprehensive approach to managing all endpoints, including desktops, laptops, smartphones, and tablets.
+General:VM: Virtual Machine: An emulation of a computer system.
+General:XOR: Exclusive Or: A logical operation that outputs true only when inputs differ.
+Protocol:IM: Instant Messaging: A type of online chat that offers real-time text transmission over the Internet.
+Protocol:IRC: Internet Relay Chat: A text-based chat system that allows users to communicate in real-time.
+Protocol:OTA: Over the Air: The wireless transmission of data.
+Protocol:SSH: Secure Shell: A cryptographic network protocol for operating network services securely over an unsecured network.
+Protocol:AH: Authentication Header: A protocol in the IPsec suite that provides connectionless integrity and data origin authentication for IP datagrams and provides protection against replay attacks.
+Protocol:ARP: Address Resolution Protocol: A protocol used to resolve IP addresses to MAC addresses.
+Protocol:BGP: Border Gateway Protocol: A routing protocol that enables routing decisions on the internet.
+Protocol:BPDU: Bridge Protocol Data Unit: A data message exchanged between switches to detect loops and build spanning tree topology.
+Protocol:CCMP: Counter Mode/CBC-MAC Protocol: An encryption protocol designed for wireless local area networks (WLANs) that uses AES for encryption.
+Protocol:CHAP: Challenge Handshake Authentication Protocol: An authentication protocol that periodically verifies the identity of the client by using a three-way handshake.
+Protocol:DHCP: Dynamic Host Configuration Protocol: A network protocol used to automatically assign IP addresses and other communication parameters to devices connected to a network.
+Protocol:DNAT: Destination Network Address Translation: A type of NAT that changes the destination IP address of incoming packets to a different IP address.
+Protocol:DNS: Domain Name System: A hierarchical and decentralized naming system for computers, services, or other resources connected to the Internet or a private network. It translates human-readable domain names into numerical IP addresses.
+Protocol:DNSSEC: Domain Name System Security Extensions: A suite of IETF specifications for securing certain kinds of information provided by the Domain Name System.
+Protocol:DSL: Digital Subscriber Line: A family of technologies that are used to transmit digital data over telephone lines.
+Protocol:ESP: Encapsulated Security Payload: A protocol within the IPsec suite that provides confidentiality, data origin authentication, connectionless integrity, an anti-replay service, and limited traffic flow confidentiality.
+Protocol:FTP: File Transfer Protocol: A standard network protocol used for the transfer of computer files between a client and server on a computer network.
+Protocol:FTPS: Secured File Transfer Protocol: An extension of FTP that adds support for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) cryptographic protocols.
+Protocol:GRE: Generic Routing Encapsulation: A tunneling protocol developed by Cisco that can encapsulate a wide variety of network layer protocols inside virtual point-to-point links over an Internet Protocol internetwork.
+Protocol:HTTP: Hypertext Transfer Protocol: The underlying protocol used by the World Wide Web.
+Protocol:HTTPS: Hypertext Transfer Protocol Secure: An extension of HTTP for secure communication over a computer network, using SSL/TLS for encryption.
+Protocol:ICMP: Internet Control Message Protocol: A supporting protocol in the Internet protocol suite, used by network devices to send error messages and operational information.
+Protocol:IKE: Internet Key Exchange: The protocol used to set up a security association in the IPsec protocol suite.
+Protocol:IMAP: Internet Message Access Protocol: An application layer Internet protocol used by email clients to retrieve email messages from a mail server over a TCP/IP connection.
+Protocol:IP: Internet Protocol: The principal communications protocol in the Internet protocol suite for relaying datagrams across network boundaries.
+Protocol:IPSec: Internet Protocol Security: A suite of protocols for securing Internet Protocol (IP) communications by authenticating and encrypting each IP packet of a communication session.
+Protocol:L2TP: Layer 2 Tunneling Protocol: A tunneling protocol used to support virtual private networks (VPNs) or as part of the delivery of services by ISPs.
+Protocol:LDAP: Lightweight Directory Access Protocol: An open, vendor-neutral, industry standard application protocol for accessing and maintaining distributed directory information services.
+Protocol:LEAP: Lightweight Extensible Authentication Protocol: A proprietary version of EAP developed by Cisco.
+Protocol:MAC: Media Access Control: A unique identifier assigned to network interfaces for communications within a network segment.
+Protocol:MMS: Multimedia Message Service: A standard for sending messages that include multimedia content to and from mobile phones over a cellular network.
+Protocol:MPLS: Multi-protocol Label Switching: A routing technique in telecommunications networks that directs data from one network node to the next based on short path labels rather than long network addresses.
+Protocol:MSCHAP: Microsoft Challenge Handshake Authentication Protocol: A Microsoft version of CHAP.
+Protocol:MTU: Maximum Transmission Unit: The largest size packet or frame that can be sent in a network.
+Protocol:NAC: Network Access Control: A computer networking solution that uses a set of protocols to define and implement a policy that describes how to secure network access for devices.
+Protocol:NAT: Network Address Translation: A method of remapping one IP address space into another by modifying network address information in the IP header of packets while they are in transit across a traffic routing device.
+Protocol:NFC: Near Field Communication: A set of communication protocols that enables two electronic devices, one of which is usually a portable device such as a smartphone, to establish communication by bringing them within 4 cm (1.6 in) of each other.
+Protocol:NTLM: New Technology LAN Manager: A suite of Microsoft security protocols that provide authentication, integrity, and confidentiality for users.
+Protocol:NTP: Network Time Protocol: A networking protocol for clock synchronization between computer systems over packet-switched, variable-latency data networks.
+Protocol:OCSP: Online Certificate Status Protocol: An Internet protocol used for obtaining the revocation status of an X.509 digital certificate.
+Protocol:OSPF: Open Shortest Path First: A routing protocol for Internet Protocol (IP) networks.
+Protocol:P2P: Peer to Peer: A distributed application architecture that partitions tasks or workloads between peers.
+Protocol:PAC: Proxy Auto Configuration: A method that allows web browsers and other user agents to automatically choose the correct proxy server for a given URL.
+Protocol:PAP: Password Authentication Protocol: A simple authentication protocol that transmits passwords in clear text.
+Protocol:PAT: Port Address Translation: A type of network address translation (NAT) that maps multiple internal private IP addresses to a single external public IP address, using different port numbers.
+Protocol:PCAP: Packet Capture: The process of intercepting and logging traffic passing over a digital network or part of a network.
+Protocol:PEAP: Protected Extensible Authentication Protocol: A protocol that encapsulates EAP within a TLS tunnel, allowing for secure authentication.
+Protocol:PEM: Privacy Enhanced Mail: An IETF standard for securing email.
+Protocol:PFS: Perfect Forward Secrecy: A cryptographic feature ensures session keys are generated uniquely for each session, protecting past communications even if long-term keys are compromised. Common in TLS 1.3, modern browsers, and secure messaging apps.
+Protocol:POP: Post Office Protocol: An application-layer protocol used by local email clients to retrieve email from a remote server over a TCP/IP connection.
+Protocol:POTS: Plain Old Telephone Service: The analog telephone service.
+Protocol:PPP: Point-to-Point Protocol: A data link layer (Layer 2) communication protocol used to establish a direct connection between two nodes.
+Protocol:PPTP: Point-to-Point Tunneling Protocol: An outdated method for implementing virtual private networks (VPNs).
+Protocol:RDP: Remote Desktop Protocol: A proprietary protocol developed by Microsoft, which provides a user with a graphical interface to connect to another computer over a network connection.
+Protocol:RTP: Real-time Transport Protocol: A network protocol for delivering audio and video over IP networks.
+Protocol:SAML: Security Assertions Markup Language: An open standard for exchanging authentication and authorization data between an identity provider and a service provider.
+Protocol:SCAP: Security Content Automation Protocol: A suite of specifications that standardize the way security software products communicate and analyze security data.
+Protocol:SCEP: Simple Certificate Enrollment Protocol: A protocol used for enrolling certificates to devices.
+Protocol:SFTP: Secured File Transfer Protocol: A network protocol that provides file access, file transfer, and file management over any reliable data stream.
+Protocol:SHTTP: Secure Hypertext Transfer Protocol: An extension to HTTP that provides secure transmission of web pages.
+Protocol:SMB: Server Message Block: A network file sharing protocol that allows applications on a computer to read and write to files and to request services from server programs in a computer network.
+Protocol:SMS: Short Message Service: A text messaging service component of most telephone, Internet, and mobile device systems.
+Protocol:SMTP: Simple Mail Transfer Protocol: An Internet standard for electronic mail (email) transmission.
+Protocol:SMTPS: Simple Mail Transfer Protocol Secure: An extension of SMTP that adds support for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) cryptographic protocols.
+Protocol:SNMP: Simple Network Management Protocol: An Internet Standard protocol for collecting and organizing information about managed devices on IP networks and for modifying that information to change device behavior.
+Protocol:SOAP: Simple Object Access Protocol: A messaging protocol specification for exchanging structured information in the implementation of web services.
+Protocol:SRTP: Secure Real-Time Protocol: A profile for RTP that provides confidentiality, message authentication, and replay protection for RTP traffic.
+Protocol:TACACS+: Terminal Access Controller Access Control System: A proprietary protocol developed by Cisco that provides centralized authentication, authorization, and accounting (AAA) services.
+Protocol:TCP/IP: Transmission Control Protocol/Internet Protocol: The suite of communication protocols used to interconnect network devices on the internet.
+Protocol:TSIG: Transaction Signature: A mechanism used to authenticate DNS messages using shared secret keys.
+Protocol:UDP: User Datagram Protocol: A communication protocol that offers a limited number of services when messages are exchanged between computers in a network.
+Protocol:URI: Uniform Resource Identifier: A string of characters used to identify a resource.
+Protocol:URL: Universal Resource Locator: A specific type of URI that specifies the location of a resource on a computer network and a mechanism for retrieving it.
+Protocol:USB: Universal Serial Bus: An industry standard that establishes specifications for cables and connectors and protocols for connection, communication, and power supply between computers, peripherals, and other computers.
+Protocol:USB OTG: USB On The Go: An extension to the USB standard that allows USB devices to act as a host, enabling them to communicate directly with other USB devices.
+Protocol:UTP: Unshielded Twisted Pair: A type of copper cable used in local area networks (LANs).
+Protocol:VLAN: Virtual Local Area Network: A logical subdivision of a physical network.
+Protocol:VLSM: Variable Length Subnet Masking: A technique that allows network administrators to divide an IP address space into subnets of different sizes.
+Protocol:VoIP: Voice over IP: A methodology and group of technologies for the delivery of voice communications and multimedia sessions over Internet Protocol (IP) networks.
+Protocol:VPN: Virtual Private Network: A technology that creates a secure and encrypted connection over a less secure network, such as the internet.
+Protocol:VTC: Video Teleconferencing: A technology that allows users in different locations to hold face-to-face meetings virtually.
+Protocol:WPA: Wi-Fi Protected Access: A security protocol for wireless networks.
+Protocol:WPS: Wi-Fi Protected Setup: A network security standard that allows users to easily secure a wireless home network.
+Protocol:WTLS: Wireless TLS: A security layer used in Wireless Application Protocol (WAP) to provide authentication, integrity, and confidentiality.
