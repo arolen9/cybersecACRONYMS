@@ -56,7 +56,7 @@
         }
         .definition-box {
             background-color: #f0fdf4; /* Very light green for definition */
-            color: #16a34a; /* Dark green text */
+            color: #01420C; /* Dark green text */
             padding: 15px;
             border-radius: 8px;
             border: 1px solid #6ee7b7;
@@ -100,7 +100,7 @@
     <script>
         // Main function to fetch and display data
         async function loadAcronyms() {
-            const githubCsvUrl = 'https://raw.githubusercontent.com/arolen9/cybersecACRONYMS/main/defined_with_categories.csv';
+            const githubCsvUrl = './defined_with_categories.csv';
             const categoriesContainer = document.getElementById('categories-container');
             const loadingMessage = document.getElementById('loading');
             const errorMessage = document.getElementById('error');
