@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Acronyms</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for better aesthetics */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5; /* Light gray background */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align to top for better scrolling */
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 12px; /* More rounded corners */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Softer, larger shadow */
+            padding: 30px;
+            max-width: 900px; /* Wider container */
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .category-item, .acronym-item {
+            cursor: pointer;
+            padding: 12px 18px;
+            border-radius: 8px;
+            transition: all 0.2s ease-in-out;
+            font-weight: 600;
+        }
+        .category-item {
+            background-color: #e0f2fe; /* Light blue for categories */
+            color: #2563eb; /* Darker blue text */
+            border: 1px solid #90cdf4;
+        }
+        .category-item:hover {
+            background-color: #bbdefb; /* Slightly darker blue on hover */
+            transform: translateY(-2px); /* Lift effect on hover */
+        }
+        .acronym-item {
+            background-color: #e6fffa; /* Light teal for acronyms */
+            color: #047857; /* Darker teal text */
+            border: 1px solid #81e6d9;
+            margin-left: 20px; /* Indent acronyms */
+        }
+        .acronym-item:hover {
+            background-color: #b2f5ea; /* Slightly darker teal on hover */
+            transform: translateY(-2px);
+        }
+        .definition-box {
+            background-color: #f0fdf4; /* Very light green for definition */
+            color: #16a34a; /* Dark green text */
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #6ee7b7;
+            margin-top: 10px;
+            margin-left: 40px; /* Further indent definition */
+            font-size: 0.95em;
+            line-height: 1.6;
+            /* Removed display: none; from here. Visibility now controlled by 'hidden' class. */
+        }
+        .section-title {
+            font-size: 1.75rem; /* Larger title */
+            font-weight: 700;
+            color: #1f2937; /* Dark gray */
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .loading-message {
+            text-align: center;
+            font-size: 1.1em;
+            color: #6b7280;
+            margin-top: 20px;
+        }
+        .error-message {
+            text-align: center;
+            font-size: 1.1em;
+            color: #ef4444; /* Red for errors */
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="section-title">Cybersecurity Acronyms & Definitions</h1>
+        <div id="loading" class="loading-message">Loading data...</div>
+        <div id="error" class="error-message hidden"></div>
+        <div id="categories-container" class="space-y-3">
+            <!-- Categories will be loaded here -->
+        </div>
+    </div>
+
+    <script>
+        // Main function to fetch and display data
+        async function loadAcronyms() {
+            const githubCsvUrl = 'https://raw.githubusercontent.com/arolen9/cybersecACRONYMS/main/defined_with_categories.csv';
+            const categoriesContainer = document.getElementById('categories-container');
+            const loadingMessage = document.getElementById('loading');
+            const errorMessage = document.getElementById('error');
+
+            try {
+                // Fetch the CSV file
+                const response = await fetch(githubCsvUrl);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const text = await response.text();
+
+                // Parse the CSV data
+                const data = parseCsv(text);
+                
+                // Display the parsed data
+                renderCategories(data, categoriesContainer);
+
+            } catch (error) {
+                console.error("Failed to load or parse data:", error);
+                errorMessage.textContent = `Failed to load data: ${error.message}. Please try again later.`;
+                errorMessage.classList.remove('hidden');
+            } finally {
+                loadingMessage.classList.add('hidden'); // Hide loading message regardless of success or failure
+            }
+        }
+
+        // Function to parse the colon-delimited CSV
+        function parseCsv(csvText) {
+            const lines = csvText.trim().split('\n');
+            const categories = {};
+
+            lines.forEach(line => {
+                // Split by colon, but only up to 4 parts to handle colons in definitions
+                const parts = line.split(':');
+                if (parts.length >= 4) {
+                    const categoryName = parts[0].trim();
+                    const acronym = parts[1].trim();
+                    const standsFor = parts[2].trim();
+                    // Join the rest of the parts for the definition, in case it contains colons
+                    const definition = parts.slice(3).join(':').trim();
+
+                    if (!categories[categoryName]) {
+                        categories[categoryName] = [];
+                    }
+                    categories[categoryName].push({
+                        acronym: acronym,
+                        standsFor: standsFor,
+                        definition: definition
+                    });
+                }
+            });
+            return categories;
+        }
+
+        // Function to render categories and their acronyms
+        function renderCategories(data, container) {
+            // Sort categories alphabetically
+            const sortedCategoryNames = Object.keys(data).sort();
+
+            sortedCategoryNames.forEach(categoryName => {
+                // Create category div
+                const categoryDiv = document.createElement('div');
+                categoryDiv.className = 'category-item flex justify-between items-center';
+                categoryDiv.innerHTML = `
+                    <span>${categoryName}</span>
+                    <span class="toggle-icon text-xl">+</span>
+                `;
+                container.appendChild(categoryDiv);
+
+                // Create acronyms container for this category, hidden by default
+                const acronymsListDiv = document.createElement('div');
+                acronymsListDiv.className = 'acronyms-list space-y-2 mt-2 hidden';
+                container.appendChild(acronymsListDiv);
+
+                // Populate acronyms for this category
+                // Sort acronyms alphabetically
+                const sortedAcronyms = data[categoryName].sort((a, b) => a.acronym.localeCompare(b.acronym));
+
+                sortedAcronyms.forEach(item => {
+                    const acronymDiv = document.createElement('div');
+                    acronymDiv.className = 'acronym-item flex justify-between items-center';
+                    acronymDiv.innerHTML = `
+                        <span>${item.acronym}</span>
+                        <span class="toggle-icon text-lg">+</span>
+                    `;
+                    acronymsListDiv.appendChild(acronymDiv);
+
+                    const definitionBox = document.createElement('div');
+                    definitionBox.className = 'definition-box hidden'; // Added 'hidden' class here
+                    definitionBox.innerHTML = `<strong>${item.standsFor}</strong>: ${item.definition}`;
+                    acronymsListDiv.appendChild(definitionBox);
+
+                    // Add click listener for acronym to show/hide definition
+                    acronymDiv.addEventListener('click', () => {
+                        definitionBox.classList.toggle('hidden');
+                        const icon = acronymDiv.querySelector('.toggle-icon');
+                        icon.textContent = definitionBox.classList.contains('hidden') ? '+' : '-';
+                    });
+                });
+
+                // Add click listener for category to show/hide acronyms list
+                categoryDiv.addEventListener('click', () => {
+                    acronymsListDiv.classList.toggle('hidden');
+                    const icon = categoryDiv.querySelector('.toggle-icon');
+                    icon.textContent = acronymsListDiv.classList.contains('hidden') ? '+' : '-';
+                });
+            });
+        }
+
+        // Load data when the window is fully loaded
+        window.onload = loadAcronyms;
+    </script>
+</body>
+</html>
