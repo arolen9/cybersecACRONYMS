@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Acronyms</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            color: #374151;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            width: 100%;
+            max-width: 900px;
+        }
+        details summary {
+            cursor: pointer;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        details summary:hover {
+            background-color: #e5e7eb;
+        }
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+        details summary::after {
+            content: '▼';
+            margin-left: 0.5rem;
+            transition: transform 0.2s ease;
+        }
+        details[open] summary::after {
+            transform: rotate(180deg);
+        }
+        .acronym-item {
+            margin-top: 0.5rem;
+            margin-left: 1.5rem; /* Indent acronyms */
+            border-left: 3px solid #60a5fa; /* Blue border for visual separation */
+            padding-left: 1rem;
+        }
+        /* Updated styling for acronym summaries */
+        .acronym-item details summary {
+            background-color: #e0f2fe; /* Slightly more pronounced light blue */
+            color: #0c4a6e; /* Darker, more distinct blue */
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        .acronym-item details summary:hover {
+            background-color: #dbeafe;
+        }
+        /* Updated styling for acronym definitions */
+        .acronym-definition {
+            background-color: #e0f7fa; /* Slightly different light blue */
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 1rem; /* Increased font size for better readability */
+            color: #023f63; /* Very dark blue for strong contrast */
+            margin-left: 0.5rem;
+            margin-top: 0.25rem;
+        }
+        .loading-spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: #60a5fa;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 0.5rem;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-3xl font-bold text-center mb-6 text-gray-800">Cybersecurity Acronyms</h1>
+        <div id="acronyms-list" class="space-y-4">
+            <div class="text-center text-gray-500">
+                <span class="loading-spinner"></span> Loading acronyms...
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const csvUrl = 'https://arolen9.github.io/cybersecACRONYMS/defined_alphabetical.csv';
+            const acronymsListDiv = document.getElementById('acronyms-list');
+
+            // Function to parse CSV data
+            function parseCSV(text) {
+                const lines = text.split('\n').filter(line => line.trim() !== '');
+                const data = {};
+                lines.forEach(line => {
+                    const parts = line.split(',');
+                    if (parts.length >= 2) {
+                        const acronym = parts[0].trim();
+                        const definition = parts.slice(1).join(',').trim(); // Join remaining parts in case definition has commas
+                        if (acronym && definition) {
+                            const firstChar = acronym.charAt(0).toUpperCase();
+                            // Determine if the first character is a number
+                            if (!isNaN(parseInt(firstChar, 10))) {
+                                if (!data['0-9']) { // Use a special key for numbers
+                                    data['0-9'] = [];
+                                }
+                                data['0-9'].push({ acronym, definition });
+                            } else {
+                                if (!data[firstChar]) {
+                                    data[firstChar] = [];
+                                }
+                                data[firstChar].push({ acronym, definition });
+                            }
+                        }
+                    }
+                });
+                return data;
+            }
+
+            // Function to render acronyms
+            function renderAcronyms(acronymsData) {
+                acronymsListDiv.innerHTML = ''; // Clear loading message
+
+                // Get all keys (letters and '0-9') from the parsed data
+                let sortedKeys = Object.keys(acronymsData);
+
+                // Separate numeric group key from alphabetic keys
+                const numericKey = '0-9';
+                const hasNumeric = sortedKeys.includes(numericKey);
+                sortedKeys = sortedKeys.filter(key => key !== numericKey);
+
+                // Sort alphabetic keys alphabetically
+                sortedKeys.sort();
+
+                // Add numeric key to the beginning if it exists
+                if (hasNumeric) {
+                    sortedKeys.unshift(numericKey);
+                }
+
+                sortedKeys.forEach(key => {
+                    const acronymsForKey = acronymsData[key] || [];
+
+                    const letterDetails = document.createElement('details');
+                    letterDetails.className = 'bg-blue-50 border border-blue-200 rounded-lg shadow-sm';
+
+                    const letterSummary = document.createElement('summary');
+                    letterSummary.className = 'text-lg font-semibold text-blue-800 hover:bg-blue-100';
+                    letterSummary.textContent = key; // Display the key (letter or '0-9')
+                    letterDetails.appendChild(letterSummary);
+
+                    // Acronyms are guaranteed to exist for this key since we only iterate over existing keys
+                    acronymsForKey.forEach(item => {
+                        const acronymItemDiv = document.createElement('div');
+                        acronymItemDiv.className = 'acronym-item';
+
+                        const acronymDetails = document.createElement('details');
+                        acronymDetails.className = 'mb-2';
+
+                        const acronymSummary = document.createElement('summary');
+                        acronymSummary.className = 'text-base font-medium';
+                        acronymSummary.textContent = item.acronym;
+                        acronymDetails.appendChild(acronymSummary);
+
+                        const definitionDiv = document.createElement('div');
+                        definitionDiv.className = 'acronym-definition';
+                        definitionDiv.textContent = item.definition;
+                        acronymDetails.appendChild(definitionDiv);
+
+                        acronymItemDiv.appendChild(acronymDetails);
+                        letterDetails.appendChild(acronymItemDiv);
+                    });
+                    acronymsListDiv.appendChild(letterDetails);
+                });
+            }
+
+            // Fetch data
+            fetch(csvUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    // Get response as a Blob
+                    return response.blob();
+                })
+                .then(blob => {
+                    // Create a FileReader to read the Blob as text with UTF-8 encoding
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        const csvText = event.target.result;
+                        const acronymsData = parseCSV(csvText);
+                        renderAcronyms(acronymsData);
+                    };
+                    reader.onerror = function(event) {
+                        console.error('FileReader error:', event.target.error);
+                        acronymsListDiv.innerHTML = `<div class="text-center text-red-500">Error reading file.</div>`;
+                    };
+                    reader.readAsText(blob, 'UTF-8'); // Specify UTF-8 encoding
+                })
+                .catch(error => {
+                    console.error('Error fetching or parsing CSV:', error);
+                    acronymsListDiv.innerHTML = `<div class="text-center text-red-500">Failed to load acronyms. Please try again later.</div>`;
+                });
+        });
+    </script>
+</body>
+</html>
+
+
